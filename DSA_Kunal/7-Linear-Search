@@ -1,0 +1,174 @@
+Linear Search 
+
+->Best Case Time : O(1)  -> Element found at first index (Only one comparison)
+->Worst Case Time : O(N) -> Did not find item required (iterate every item)
+
+Code:
+
+public class Main{
+    public static void main(String[] args){
+        int[] nums ={23,4,5,7,9,3,5};
+        int target = 9;
+        int ans = linearSearch(nums,target);
+        System.out.println(ans);
+    }
+    // Search in the Array: return the index if item found else -1
+    static int linearSearch(int[] arr,int target){
+        if(arr.length==0){
+            return -1;
+        }
+
+        for (int index = 0; index < arr.length; index++) {
+            //CHECK
+            int element = arr[index];
+            if(element == target){
+                return index; // ends the function
+            }
+        }
+        // this line executes if none executes above , not found
+
+        return -1;
+    }
+}
+.....................................................................................
+
+Search character in String using linear Search
+
+code:
+
+public class searchInStrings {
+    public static void main(String[] args) {
+        String name = "yadhu";
+        char target = 'u';
+        System.out.println(search(name,target));
+    }
+    
+    static boolean search(String str, char target) {
+        if(str.length()==0){
+            return false;
+        }
+        for (int i = 0; i < str.length(); i++) {
+            if(target == str.charAt(i)){
+                return true;
+            }
+        }
+        return false;
+    }
+}
+
+.....................................................................................
+
+Same but using for each
+
+
+for( char ch: str.toCharArray()){
+    if(target==ch){
+        return true;
+    }
+}
+...................................................................................
+
+Search in Range 
+
+public class SearchRange{
+    public static void main(String[] args){
+        int[] nums ={23,4,5,7,9,3,5};
+        int target = 7;
+        int ans = linearSearch(nums,target,2,5);
+        System.out.println(ans);
+    }
+    // Search in the Array: return the index if item found else -1
+    static int linearSearch(int[] arr,int target, int start, int end){
+        if(arr.length==0){
+            return -1;
+        }
+
+        for (int index = start; index < end; index++) {
+            //CHECK
+            int element = arr[index];
+            if(element == target){
+                return index; // ends the function
+            }
+        }
+        // this line executes if none executes above , not found
+
+        return -1;
+    }
+}
+..................................................................................
+return minimum from an array:
+
+
+public class FindMinimum {
+    public static void main(String[] args) {
+        int []  arr={4,6,83,7,98,4,6,8,2,67};
+        System.out.println(min(arr));
+    }
+
+    static int min(int[] arr){
+        if(arr.length==0){
+            return -1;
+        }
+        int min = arr[0];
+        for (int index = 0; index < arr.length; index++) {
+            if(arr[index]<min) {
+                min = arr[index];
+            }
+        }
+        return min;
+    }
+}
+......................................................................................
+Search in a 2d array:
+
+import java.util.Arrays;
+
+public class searchIn2dArray {
+    public static void main(String[] args) {
+        int[][] arr ={
+                {24,4,1},
+                {18,12,3,9},
+                {78,99,34,56},
+                {18,12}
+        };
+        int target =56;
+        int[] ans = search(arr,target);
+        System.out.println(Arrays.toString(ans));
+    }
+
+    static int[] search(int[][] arr,int target){
+        for (int row = 0; row < arr.length; row++) {
+            for (int col = 0; col < arr[row].length; col++) {
+                if(arr[row][col]==target){
+                    return new int[] {row,col};
+                }
+            }
+        }
+        return new int[]{-1,-1};
+    }
+}
+.................................................................................
+
+To find even digit numbers in an array :
+
+public int findNumbers(int[] nums) {
+    int total = 0;  // no of even digit numbers
+
+    int digits = 0;
+    for(int i = 0 ; i < nums.length ; i++){
+        digits = 0;
+        int number = nums[i];
+        while(number > 0){
+            number/=10;
+            digits++;
+        }
+        if(digits%2==0){
+            total++;
+        }
+    }
+    return total;
+}
+.....................................................................................
+
+
+

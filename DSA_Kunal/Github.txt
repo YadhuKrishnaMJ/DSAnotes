@@ -1,0 +1,35 @@
+Github
+
+-> Collaborate , Open Source project
+-> Maintain History of project
+-> Platform to host git repository
+
+-> .git is the repository where all history is saved
+-> git init command is used to initialize
+-> git status command is used to check not in history
+-> git add . <or> names.txt add to update repository (to be commited)
+-> git commit -m "names.txt file added" to commit changes
+-> git restore --staged names.txt to restore staging
+-> git log - Saved history
+-> git reset <code> - Reset to a commit
+-> git stash - kind of like savepoint
+-> git stash pop/clear
+-> git remote add origin <URL> - Add github URL
+-> git remote -v   - all urls attached
+-> git push origin master  - Push changes to github
+-> Commit causes a branch Structure, Directed Acyclic Graph
+-> Always create a separate branch when working with new feature
+-> Never Commit on Main/Master Branch, when code is not finalized
+-> Head is the pointer that points to branch that is being commited on
+-> git checkout <branch name> to create a separate branch
+-> git merge <branch name> to merge the branch to Main (works via puill req)
+
+-> git clone <url>  - to clone a repository
+-> to clone a repositoryin github you can use the fork functionality 
+-> git remote add upstream <url> - to set Forked URL
+
+-> pull request makes a request to review your code and allow to merge your clone with Main
+
+-> for every new feature - one pull request and one branch
+
+

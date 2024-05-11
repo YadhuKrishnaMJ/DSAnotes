@@ -1,0 +1,120 @@
+.equals() -> Checks the value only , not the object itself
+
+Switch Case
+
+-> break is used to terminate a sequence
+-> if no break -> checks other cases as well
+-> default executes if none executes
+
+Example:
+
+        Scanner in = new Scanner(System.in);
+        String fruit = in.next();
+
+        switch (fruit){
+            case "Mango":
+                System.out.println("King of Fruit");
+                break;
+            case "Apple":
+                System.out.println("A sweet red Fruit");
+                break;
+            case "Orange":
+                System.out.println("Round Fruit");
+                break;
+            case "Grapes":
+                System.out.println("Small Fruit");
+                break;
+            default:
+                System.out.println("Invalid Fruit");
+
+        }
+.......................................................................
+
+-> if break not provided, all body below the case will execute till break
+
+-> default by convention is by the end
+
+..........................................................................
+
+Alt + Enter is used to get Suggestions from intelliJ 
+
+.............................................................................
+
+New Syntax for Switch Case
+
+switch (fruit) {
+    case "Mango" -> System.out.println("King of Fruit");
+    case "Apple" -> System.out.println("A sweet red Fruit");
+    case "Orange" -> System.out.println("Round Fruit");
+    case "Grapes" -> System.out.println("Small Fruit");
+    default -> System.out.println("Invalid Fruit");
+}
+
+-> Switch case values should be "Literals"
+......................................................................
+Another way for multiple cases
+
+int day = in.nextInt();
+switch (day) {
+    case 1, 2, 3, 4, 5 -> System.out.println("Weekday");
+    case 6, 7 -> System.out.println("Sunday");
+}
+.......................................................................................
+
+Nested Switch cases
+
+new Syntax
+
+
+Scanner in = new Scanner(System.in);
+int empID = in.nextInt();
+String department = in.next();
+
+switch (empID) {
+    case 1 -> System.out.println("yadhu");
+    case 2 -> System.out.println("Akshay");
+    case 3 -> {
+        System.out.println("Emp -> 3");
+        switch (department) {
+            case "IT" -> System.out.println("IT Department");
+            case "Mgt" -> System.out.println("Management Department");
+            default -> System.out.println("No department");
+        }
+    }
+    default -> System.out.println("Enter Correct ID");
+}
+
+
+Old Syntax
+
+Scanner in = new Scanner(System.in);
+int empID = in.nextInt();
+String department = in.next();
+
+switch (empID) {
+    case 1:
+        System.out.println("yadhu");
+        break;
+    case 2:
+        System.out.println("Akshay");
+        break;
+    case 3:
+        System.out.println("Emp -> 3");
+        switch (department) {
+            case "IT":
+                System.out.println("IT Department");
+                break;
+            case "Mgt":
+                System.out.println("Management Department");
+                break;
+            default:
+                System.out.println("No department");
+                break;
+        }
+        break;
+    default:
+        System.out.println("Enter Correct ID");
+        break;
+}
+.............................................................................................
+

@@ -1,0 +1,213 @@
+multiline comments -> /* ... */
+
+Basic If else Program 
+        if (salary > 10000){
+            salary+=2000; // salary = salary + 2000;
+        }
+        else if (salary > 20000){
+            salary+=3000;
+        }
+        else{
+            salary+=1000;
+        }
+
+-> && -> And
+-> || -> or
+-> == -> equal
+-> != -> not equal
+
+
+Loops
+
+For Loops
+
+->
+for(init ; cond ; increment/decrement){
+    Body;
+}
+
+Example:
+
+for(int num = 1; num <= 5; num += 1){
+    System.out.println(num);
+}
+
+
+-> Initialization only happens once
+
+-> For loop shortcut => fori + enter
+
+
+While loop
+
+while(cond){
+    body
+}
+
+Example
+
+int num = 1;
+while(num <= 5){
+    System.out.println(num);
+    num+=1;
+}
+
+-> Use while when you dont know how many times loop run
+-> Use for loop when we know how many times loop run
+
+Do while Loops
+
+int n = 1;
+do {
+    System.out.println(n);
+    n++
+}while(n <= 5);
+
+-> do while loop always runs the body atleast once
+
+
+Largest Program
+
+int a = in.nextInt();
+int b = in.nextInt();
+int c = in.nextInt();
+
+int max = a;
+if (b>max){
+    max = b;
+}
+if(c>max){
+    max = c;
+}
+System.out.println(max);
+
+
+alternative:
+int max = Math.max(c,Math.max(a,b));
+
+Check if alphabet is upper case or lower case
+
+
+char ch = in.next().trim().charAt(0);
+
+.trim()
+-> Removes Extra Space 
+
+.charAt(0)
+-> takes char type at 0th place from a string
+
+-> basically this takes only the first character as char
+
+        Scanner in = new Scanner(System.in);
+        char ch = in.next().trim().charAt(0);
+
+        if(ch >= 'a' && ch <= 'z'){
+            System.out.println("LowerCase");
+        }
+        else{
+            System.out.println("Upper Case");
+        }
+
+        System.out.println(ch);
+.................................................................
+
+Fibonacci -> Sum of previous two numbers
+code
+
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        int a = 0;
+        int b = 1;
+        int count = 2;
+
+        while(count<=n){
+            int temp = b;
+            b = b + a;
+            a = temp;
+            count+=;
+        }
+
+        System.out.println(b);
+.......................................................................
+
+Counting Occurences
+
+-> n % 10 = last digit
+
+int n =42342346;
+        int count = 0;
+        while(n>0){
+            int rem = n%10;
+            if(rem ==5){
+                count++;
+            }
+            n = n /10;
+             // n=10
+        }
+        System.out.println(count);
+
+.......................................................................
+
+reverse a number
+
+public static void main(String[] args) {
+        int num =23423545;
+
+        int ans =0;
+
+        while(num>0){
+            int rem = num % 10;
+            num/=10;
+
+            ans = ans*10 + rem;
+        }
+        System.out.println(ans);
+    }
+}
+.....................................................................
+
+Calculator Program
+
+        Scanner in = new Scanner(System.in);
+        int ans = 0;
+        while(true) {
+            System.out.println("Enter the operator:");
+            char op = in.next().trim().charAt(0);
+            if (op == '+' || op == '-' || op == '*' || op == '/' || op == '%') {
+                // input two numbers
+                System.out.println("Enter two numbers:");
+                int num1 = in.nextInt();
+                int num2 = in.nextInt();
+                System.out.println();
+                if (op == '+') {
+                    ans = num1 + num2;
+                }
+                if (op == '-') {
+                    ans = num1 - num2;
+                }
+                if (op == '*') {
+                    ans = num1 * num2;
+                }
+                if (op == '/') {
+                    if (num2 != 0) {
+                        ans = num1 / num2;
+                    }
+                }
+                if (op == '%') {
+                    ans = num1 % num2;
+                }
+            } else if (op == 'x' || op == 'X') {
+                break;
+            } else {
+                System.out.println("Invalid Operation");
+            }
+            System.out.println(ans);
+
+        }
+
+....................................................................
+
+
+
+
+

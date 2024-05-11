@@ -1,0 +1,60 @@
+Java Code Execution
+
+-> .java file -> Compiler -> .class file(byte code) -> JVM (java virtual machine) -> Machine Code
+-> JVM interprets line by line -> Platform Independent
+
+Platform Independence
+
+-> byte code - all os
+-> Java is platform Independent
+-> JVM is platform dependent
+
+JDK vs JRE JVM JIT
+
+JDK -> JRE + dev tools
+JRE -> JVM + library classes
+JVM -> Contains Just in time compiler (JIT)
+
+JDK
+
+-> environment to develop and run java
+-> JRE+devtools
+-> compiler - javac
+-> Archiver - jar
+-> docs generator - javadoc
+-> interpreter and loader
+
+
+JRE
+
+-> Java runtime environment
+-> env to run program
+-> libraries + JVM
+-> class loader loads all classes needed
+-> JVM sends code to Byte code Verifier
+
+Compile time
+
+-> .java file -> .class file (javac)
+
+
+Classloader 
+
+-> Loading -> Linking -> initialization 
+-> JVM contains the stack and heap mem allocation
+
+Run time
+
+class loader -> Byte code verifier -> interpreter -> runtime -> hardware
+
+JVM limitation
+ -> Functions get interpreted again and again for each Class
+
+JIT Fixes this
+-> Stops reinterpretation, makes execution faster
+-> Garbage Collector
+
+
+Java code -> JDK -> byte code -> JVM -> JRE
+
+

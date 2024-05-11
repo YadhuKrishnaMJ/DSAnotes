@@ -1,0 +1,142 @@
+-> Every Java file is class itself
+-> name of file = name of class
+
+-> public -> class can be accessed from anywhere
+
+-> main function is required in every java file, entry point
+-> u can use javac to compile it to a class file then run the class file using java keyword
+
+->static -> access without creating an object thus used in main
+
+-> String[] args basically store all the command line arguments
+
+-> javac -d <destination> - to store bytecode in specified directory (. present director, .. -> prev directory)
+
+-> all git,javac,java are exe files located in bin 
+-> environment variables -> list of paths
+
+-> package is the folder where java file lies
+-> package help in scoping 
+ 
+
+->pakage com.yadhu means the java files lies inside com inside yadhu pakage
+
+->Classes are usually starting with capital letters
+
+-> out is a variable that is PrintStream, which has object println, 
+-> standard output stream is command line
+
+-> System.out.println() -> shortcut sout+enter
+-> public static void main(String[] args) -> psvm+enter
+
+Inputs in Java
+
+->Scanner class is used
+->System.in = standard input , similarily System.out = Standard output
+
+
+System.out.println("Hey! How are you?");
+Scanner input = new Scanner(System.in);
+
+-> nextInt() , next() , nextLine()
+
+Primitives
+
+-> primitives are datatype that we cannot further divide
+
+int rollno = 69;
+char letter = 'r';
+float marks = 98.67f;
+double largeDecimalNumbers = 234234.234; -> 4 bytes
+long largeInteger =2342342342342L; -> 8 bytes
+boolean check = false;
+
+-> by default all decimal are double , integers = int
+
+-> Wrapper classes help doing a lot more functions to primitives
+
+ int a =10;
+
+ -> here 10 is literal, a is the identifier
+
+
+234_000_000 => 234,000,000
+
+
+-> float datatype can cause floating point error
+
+-> hasNext() checks if it has next String
+
+Type Casting
+
+-> Lhs should be greater than rhs 
+
+float num = input.nextInt(); // should work, not the other way around
+
+Narrowing conversion
+//Type Casting
+int num = (int) (67.56f);
+System.out.println(num);
+
+
+Automatic type promotion in expression
+
+int a = 257;
+byte b = (byte)(a); // 257 % 256 = 1
+
+-> 256 is maximum value of byte
+
+byte a = 40;
+byte b = 50;
+byte c = 100;
+int d = (a * b) /c; // java automatically promotes into Int for this exp
+
+
+byte b = 50;
+b = b*2; // will give error as expression promotes it into int
+
+
+-> JAVA works in Unicode values
+
+rules for typecasting
+
+-> all byte , short are converted to int
+-> if any double,float or long entire thing turns in them
+
+3 * 5.6
+=> float
+
+
+Basic Celcius to Farenheit Program
+
+package com.yadhu;
+
+import java.util.Scanner;
+
+public class Basics {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Please Enter the Temperature");
+        float tempC=input.nextFloat();
+
+        float tempF = (tempC *9/5)+32;
+        System.out.println("Farenheit:"+tempF);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
