@@ -91,3 +91,9 @@ public class hash {
 Time Complexity 
 Best Case : O(1)
 worst Case : O(n)
+
+Hash tables are implemented where
+
+constant time lookup and insertion is required
+cryptographic applications
+indexing data is required

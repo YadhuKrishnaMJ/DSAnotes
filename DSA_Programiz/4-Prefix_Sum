@@ -1,0 +1,26 @@
+-> We create a separate array to store sum, so subarray sums can be calculated in constant time 
+Code:
+
+public class PrefixSumConcept {
+    public static void main(String[] args) {
+        int[] array = {1,4,2,5,6,8,9,45,7,9,4};
+        int[] prefix = PrefixSum(array);
+        for(int i:array){
+            System.out.println(i);
+        }
+        for(int i: prefix){
+            System.out.println(i);
+        }
+    }
+    static int[] PrefixSum(int[] arr){
+        int n = arr.length;
+        int[] prefix = new int[n];
+        prefix[0] = arr[0];
+        for(int i = 1; i < n; i++){
+            prefix[i] = prefix[i-1] + arr[i];
+        }
+        return prefix;
+    }
+
+}
+
