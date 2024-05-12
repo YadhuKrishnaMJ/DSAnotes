@@ -1,0 +1,49 @@
+Whats the difference?
+
+-> HashMap is not thread safe, not syncronized
+-> Faster than Hashtable due to no Sync Overhead
+-> hashtable doesnt support null values, hashmap can have null values
+-> iterator fail-fast issue in hashmap
+-> hashmap is introduced in java collections
+..............................................................................
+Code:
+
+import java.util.*;
+public class HashMapConcept {
+    public static void main(String[] args) {
+        HashMap<Integer,Integer> hm = new HashMap<>();
+        //Add elements
+        hm.put(12,345);
+        hm.put(24,876);
+        hm.put(13,456);
+        hm.put(59,890);
+
+        //Remove element
+        hm.remove(12);
+
+        //Retrieve Value
+        System.out.println(hm.get(13));
+
+        //size of ht
+        System.out.println(hm.size());
+
+        //Contains
+        System.out.println(hm.containsKey(24));
+        System.out.println(hm.containsValue(876));
+
+        //print hash table
+        System.out.println(hm);
+        
+        //iterating through a Hashmap
+        
+        for(Map.Entry<Integer,Integer> entry : hm.entrySet()){
+            System.out.println("Key:"+entry.getKey());
+            System.out.println("Value:"+entry.getValue());
+        }
+
+        //clear ht
+        hm.clear();
+    }   
+}
+
+................................................................................................
