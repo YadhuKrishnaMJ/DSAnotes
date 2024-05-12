@@ -1,0 +1,54 @@
+Hash Tables
+
+-> Key - Value Pairs
+
+Hash function
+    -> K = key , then  h(K) is the hash function    
+    -> h(k) evaluates into an index where the data is stored related to K
+
+..........................................................................
+
+Hash Collision
+
+    ->When the hash function generates the same index for multiple keys, there will be a conflict (what value to be stored in that index). 
+      This is called a hash collision.
+
+    ->Resolution 
+        1)Chaining
+            use linked lists to chain every colliding element in same index
+
+        2)Open Addressing
+            -Linear probing
+                h(k, i) = (h′(k) + i) mod m
+                In linear probing, the next index is checked ,ie +1,+2 etc. 
+                this causes clustering hence more time traversing
+
+            -Quadratic probing  
+                similar to linear but using this relation
+                h(k, i) = (h′(k) + c1*i + c2*(i**2)) mod m
+        
+        
+            -Double hashing
+                using another hash function again
+                h(k, i) = (h1(k) + i*h2(k)) mod m
+.........................................................................................................................
+
+Good Hash Functions:
+
+->Division Method:
+    k - key , m - size of hashtable
+    h(k) = k mod m
+
+    poor performance when size is powers of 2
+
+->Multiplication method:
+    involves multiplying with a constant fraction
+    h(k) = ⌊m(kA mod 1)⌋
+    k is a fraction 
+    optimal k is (√5-1)/2
+    typically for size of powers of 2
+
+-> Universal Method:
+    in universal method we use a set of good hash functions, independent of keys
+...........................................................................................................................
+
