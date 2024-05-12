@@ -52,3 +52,38 @@ Good Hash Functions:
     in universal method we use a set of good hash functions, independent of keys
 ...........................................................................................................................
 
+Code for Hash Tables:
+
+import java.util.Hashtable;
+
+public class hash {
+    public static void main(String[] args) {
+        Hashtable<Integer,Integer> ht = new Hashtable<>();
+
+        //Add elements
+        ht.put(12,345);
+        ht.put(24,876);
+        ht.put(13,456);
+        ht.put(59,890);
+
+        //Remove element
+        ht.remove(12);
+
+        //Retrieve Value
+        System.out.println(ht.get(13));
+
+        //size of ht
+        System.out.println(ht.size());
+
+        //Contains
+        System.out.println(ht.containsKey(24));
+        System.out.println(ht.containsValue(876));
+
+        //print hash table
+        System.out.println(ht);
+
+        //clear ht
+        ht.clear();
+    }
+}
+..........................................................................
