@@ -1,0 +1,89 @@
+In two pointers concept we use two pointers to iterate in different directions in an iterable
+
+Example Implementation:
+
+
+public class TwoPointersExample {
+    public static boolean hasPairWithSum(int[] arr, int targetSum) {
+        // Step 1: Initialize pointers
+        int left = 0;
+        int right = arr.length - 1;
+        
+        // Step 2: Iterate or Advance
+        while (left < right) {
+            int currentSum = arr[left] + arr[right];
+            
+            // Step 3: Process or Compare
+            if (currentSum == targetSum) {
+                return true; // Pair found
+            } else if (currentSum < targetSum) {
+                left++; // Move left pointer to the right
+            } else {
+                right--; // Move right pointer to the left
+            }
+        }
+        
+        // Step 4: Termination Condition
+        return false; // No pair found
+    }
+    
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 4, 7, 11};
+        int targetSum = 13;
+        System.out.println(hasPairWithSum(arr, targetSum)); // Output: true
+    }
+}
+..................................................................................
+
+To check if a character is alphabet in java you can use
+    Character.isLetter()
+
+To check if a character is a digit :
+    Character.isDigit()
+
+To concatenate strings we can use
+    string_name += <stringToBeAdded>
+
+To change to lower or upper cause
+
+    string_name.toUpperCase()
+    string_name.toLowerCase()
+
+
+....................................................................................
+
+Solving Palindrome using two pointer
+
+
+
+
+public class TwoPointers{
+    static boolean isPalindrome(String s) {
+        String check ="";
+        for(int i = 0; i < s.length() ; i++){
+            if(Character.isLetter(s.charAt(i)) || Character.isDigit(s.charAt(i))){
+                check+= s.charAt(i);
+            }
+        }
+        check = check.toLowerCase();
+        int left = 0;
+        int right = check.length() - 1;
+
+        while(left<right){
+            if(check.charAt(left) != check.charAt(right)){
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+
+        System.out.println(isPalindrome("0P"));
+    }
+
+}
+
+..................................................................................................

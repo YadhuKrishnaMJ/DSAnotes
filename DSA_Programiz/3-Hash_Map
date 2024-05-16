@@ -47,3 +47,7 @@ public class HashMapConcept {
 }
 
 ................................................................................................
+
+-> equals()
+    check if two hashmaps are equals
+    map1.equals(map2);
