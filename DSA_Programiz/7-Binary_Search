@@ -1,0 +1,58 @@
+Binary Search is a searching algorithm for finding an elements position in a sorted array.
+
+Steps:
+Iterative Method:
+
+do until the pointers low and high meet each other.
+    mid = (low + high)/2
+    if (x == arr[mid])
+        return mid
+    else if (x > arr[mid]) // x is on the right side
+        low = mid + 1
+    else                       // x is on the left side
+        high = mid - 1
+
+
+Recursive Method
+
+binarySearch(arr, x, low, high)
+    if low > high
+        return False 
+    else
+        mid = (low + high) / 2 
+        if x == arr[mid]
+            return mid
+        else if x > arr[mid]        // x is on the right side
+            return binarySearch(arr, x, mid + 1, high)
+        else                               // x is on the left side
+            return binarySearch(arr, x, low, mid - 1)
+..........................................................................
+
+Code for Iterative Method:
+
+public class BinarySearchConcept {
+    public static void main(String[] args) {
+        int[] arr = {2,4,6,8,10,24,245,346};
+        System.out.println(binarySearch(arr,10));
+    }
+
+    static int binarySearch(int[] arr , int target){
+        int left = 0;
+        int right = arr.length - 1 ;
+
+        while(left <= right){
+            int mid = (left + right)/2 ;
+            if(arr[mid]==target){
+                return mid;
+            }
+            else if(arr[mid]>target){
+                right = mid - 1;
+            }
+            else{
+                left = mid + 1;
+            }
+        }
+        return -1;
+    }
+}
+...........................................................................
