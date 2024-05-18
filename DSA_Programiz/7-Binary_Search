@@ -56,3 +56,33 @@ public class BinarySearchConcept {
     }
 }
 ...........................................................................
+
+Using Recursion
+
+public class BinarySearchConcept {
+    public static void main(String[] args) {
+        int[] arr = {2,4,6,8,10,24,245,346};
+        System.out.println(binarySearch(arr,10,0,arr.length-1));
+    }
+
+    static int binarySearch(int[] arr , int target, int low , int high){
+        if(low > high){
+            return -1;
+        }
+        else{
+            int mid = (low + high) / 2 ;
+            if(arr[mid]==target){
+                return mid;
+            }
+            else if(arr[mid]>target){
+                return binarySearch(arr,target,low,mid-1);
+            }
+            else{
+                return binarySearch(arr,target,mid+1,high);
+            }
+        }
+    }
+}
+
+................................................................................................
+
