@@ -1,0 +1,242 @@
+DBMS
+
+-> Data
+-> Information
+-> Database
+-> DBMS
+...................................................
+
+File Processing < DBMS
+-> Limitations of File System
+-> Advantages of DBMS
+-> Applications of DBMS
+-> Purpose
+    Data -> Information -> Knowledge -> Processing
+....................................................
+
+Data Abstraction:
+
+-> Hiding unwanted Details from user end
+
+-> Levels of Abstraction
+    View
+    Logical 
+    Physical
+.....................................................
+Schema:
+
+-> Logical Structure of Database
+
+-> Types:
+    Physical
+    Logical
+.....................................................
+Instances:
+
+-> Content of DBMS at a time
+-> Physical Data Independence
+
+.......................................................
+Data Models:
+-> Data models is , a collection of tools for describing Data and its relationships,
+    Semantics and Constraints
+
+-> Types:
+    Relational Model
+    ER Model
+    Object based
+    Semi Structured
+    Network
+    Hierarchy
+.........................................................
+
+SQL -> Structured Query Language
+
+Categories:
+    DDL
+    DML
+    DCL
+    TCL
+.........................................................
+
+DDL 
+
+-> Deals with Structure
+
+-> Auto Commit
+................
+
+Create Command:
+
+create table table_name(column1 type, column2 type .....);
+................
+
+Alter Command:
+
+alter table table_name add/modify column_name type;
+
+Drop Column:
+
+Alter table table_name drop column column_name;
+
+...............
+
+Drop Command:
+
+Drop table table_name;
+
+...............
+
+Truncate command:
+
+Truncate table table_name;
+
+.................................................................................
+
+
+Database Architecture:
+
+-> Users:
+    Naive Users
+    Application Programmers
+    Sophisticated Users
+    Database Admin
+    Native Users
+    Specialized Users
+    Stand-Alone Users
+
+-> Components:
+    Query processor -> Dml compiler, ddl interpreter, embedded dml pre-compiler, Query optimizer
+    Storage manager -> Authorization, Integrity, Transaction, File, Buffer Managers
+    Disk Storage -> Data Files, Data Dictionary, Indices, Statistical Data
+
+...........................
+
+-> Data Independence:
+    Physical
+    Logical
+    Conceptual
+
+-> Need of Data Independence
+...........................
+
+Data Models:
+refer PPt for proper understanding
+
+
+...........................
+
+
+DML Commands:
+
+Constraints:
+
+    Domain:
+
+        Datatype
+        not null
+        Check
+        Unique
+        Primary Key
+
+    Referential:
+
+        Foreign Key
+
+    Assertions
+
+    Authorization:
+        User
+        Read
+        Insert
+        Update 
+        Delete
+......................
+DML Commands:
+
+Insert Command:
+    
+    Single Row:
+
+        Insert into table_name(columns) values(data);
+
+        -> Ommit columns for addding values to all columns
+
+    Multiple Row:
+        -> ask user value using &
+        Insert into table_name values(&data);    
+
+............
+
+Update command:
+
+    -> Column Wise
+
+    update table_name set column_name = value where condition;
+
+    update emp set emp_name = 'yadhu' where emp_id = 1002;
+
+............
+
+Delete Command:
+
+    -> Works row-Wise
+
+    delete from table_name where cond;
+
+    delete from emp where emp_id = 1002;
+
+..............
+
+Select Command:
+    -> Works row and column Wise
+
+    Select * from emp;
+    Select Column1,Column2... from emp;
+
+    Where Clause:
+        
+        Select * from Emp where sal > 5000;
+
+    Order By Clause:
+
+        Select * from Emp order by job asc,sal desc;
+
+    Group By Clause:
+
+        Select job, avg(sal) from Emp group by job  having count(job) > 2;
+
+................................................................................
+
+DBA and thier Responsibilities: Refer PPt
+
+................................................................................
+
+
+
+DCL -> Data Control Language
+
+-> Privelege Management
+
+Commands:
+    Grant Command:
+
+        grant all/insert/update/delete/select on emp to usrname;
+
+    Revoke Command:
+
+        Revoke all/insert/update/delete/select on emp to usrname;
+
+...................................................................................
+
+TCL -> Transaction Control Language
+
+Commit
+Rollback
+Savepoint
+
+.................................................................................
+
+
+
+
