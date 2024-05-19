@@ -1,0 +1,51 @@
+Sliding Windows Fixed:
+
+-> A window of fixed size 'k' sliding over an array
+
+Example:
+
+Subarray sum using fixed sliding window:
+
+Approach:
+
+    ->Calculate sum of init Windows
+    ->Slide by subtracting leaving element and adding entering element to the window
+    ->Keep checking the max sum for each window
+.....................................................................................
+
+Code:
+
+public class SlidingWindowFixed {
+    
+    public static void main(String[] args) {
+        int[] arr = {1,4,6,2,56,7,3,8};
+        int k = 5;
+        System.out.println(subarraySum(arr,k));
+    }
+
+    static int subarraySum(int[] arr, int k){
+        if(k>arr.length){
+            throw new IllegalArgumentException("Array length is smaller than subarray");
+        }
+        int currSum = 0;
+        for(int i = 0; i < k ; i++){
+            currSum = currSum + arr[i];
+        }
+        int maxSum = 0;
+        maxSum = currSum;
+        for(int i = k ; i < arr.length; i++){
+            currSum += arr[i];
+            currSum -= arr[i-k];
+            if(currSum > maxSum){
+                maxSum = currSum;
+            }
+        }
+        return maxSum;
+    }
+}
+.....................................................................................
+
+Variable Length Sliding Window
+
+-> In this the length of the window is varible suited to specific problems
+
