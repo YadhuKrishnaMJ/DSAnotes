@@ -1,0 +1,46 @@
+Design process
+
+Conceptual Design -> Functional Requirements -> Logical Design -> Physical Design
+
+.....................................................................................
+
+ER Diagram
+
+Entity: Real World Objects  -> Contains Attributes -> Contains Values for Attributes
+Relations: Association b/w Entities
+Entity Sets , Relationship Sets
+
+........................................................................................
+
+Normalization -> used to reduce redundant data
+    -> Use functional dependencies
+
+........................................................................................
+
+Attributes Types:
+    Single 
+    Multiple
+    Derived 
+    null
+............................................................................................
+
+Contraints:
+    Mapping
+    Participation
+
+..........................................................................................
+
+Mapping Constraints:
+    One to One
+    one to Many
+    Many to one
+    Many to Many
+
+..............................................................................................
+
+Participation Constraints:
+    Total  -> represented by double Lines
+    Partial
+
+............................................................................................
+
