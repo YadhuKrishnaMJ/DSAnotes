@@ -1,0 +1,157 @@
+Node: basic block
+    Data
+    reference (Address of next node)
+
+-> Reference to first Node -> head
+
+-> Methods for operations
+......................................................
+Basic Code:
+// Linked list implementation in Java
+
+public class LinkedList {
+  Node head; //Node Head is mentioned in Linked List Class
+  static class Node{
+      int value; // value of Node
+      Node next; // Reference to the next node
+
+      Node(int d){ // Constructor
+          value = d;
+          next = null;
+      }
+  }
+
+  public static void main(String[] args) {
+      LinkedList ls = new LinkedList(); // create an object of LinkedList
+      ls.head = new Node(1);
+      Node first = new Node(2);
+      Node second = new Node(3);
+      ls.head.next = first;
+      first.next = second;
+
+      Node ptr = ls.head;
+
+      while(ptr != null){
+          System.out.println(ptr.value);
+          ptr = ptr.next;
+      }
+  }
+}
+
+................................................................................................
+
+Linked List search Worst case Time Complexity -> O(n)
+Insertion and Deletion -> O(1)
+
+.................................................................................................
+
+Applications :
+  Dynamic memory allocation 
+  Implement in Stack and Queues
+  Undo functionality
+  Hash tables, Graphs
+
+................................................................................................
+
+
+Head: Points to end of linked List
+Next: if null, then last node -> Useful for iteration
+
+................................................................................................
+
+Operations : Code
+
+
+public class LinkedList {
+  Node head; //Node Head is mentioned in Linked List Class
+  static class Node{
+      int value; // value of Node
+      Node next; // Reference to the next node
+
+      Node(int d){ // Constructor
+          value = d;
+          next = null;
+      }
+  }
+
+  public static void main(String[] args) {
+      LinkedList ls = new LinkedList(); // create an object of LinkedList
+      ls.head = new Node(1);
+      Node first = new Node(2);
+      Node second = new Node(3);
+      ls.head.next = first;
+      first.next = second;
+
+      printNodes(ls.head);
+
+      insertAtBeginning(ls, 6);
+      System.out.println();
+      printNodes(ls.head);
+
+      insertAtEnd(ls,69);
+      System.out.println();
+      printNodes(ls.head);
+
+      insertAtK(ls,96,2);
+      System.out.println();
+      printNodes(ls.head);
+
+      deleteFromBeginning(ls);
+      System.out.println();
+      printNodes(ls.head);
+
+      deleteFromEnd(ls);
+      System.out.println();
+      printNodes(ls.head);
+  }
+
+  static void printNodes(Node node) { // function to print all nodes in the linked list
+      Node ptr = node;
+      while (ptr != null) {
+          System.out.print(ptr.value + " --> ");
+          ptr = ptr.next;
+      }
+  }
+
+  static void insertAtBeginning(LinkedList ls, int val){
+      Node newnode = new Node(val);
+      newnode.next = ls.head;
+      ls.head=newnode;
+  }
+
+  static void insertAtEnd(LinkedList ls , int val){
+      Node  newnode = new Node(val);
+      Node i = ls.head;
+      while(i.next!=null){
+          i = i.next;
+      }
+      i.next = newnode;
+  }
+
+  static void insertAtK(LinkedList ls, int val , int k){
+      Node newnode = new Node(val);
+      Node node = ls.head;
+      int i = 2;
+      while(i < k){
+          node = node.next;
+          i++;
+      }
+      newnode.next = node.next;
+      node.next = newnode;
+  }
+
+  static void deleteFromBeginning(LinkedList ls){
+      ls.head = ls.head.next;
+  }
+
+  static void deleteFromEnd(LinkedList ls){
+      Node node = ls.head;
+      while(node.next.next !=null){
+          node = node.next;
+      }
+      node.next = null;
+  }
+
+
+
+}
