@@ -1,0 +1,52 @@
+One pointer is slow other one iterates faster
+
+-> This is used to check cycles in linked list, return middle elements and other approaches
+
+...................................................................................................
+Code:
+public class FastSlowPointers {
+    public static void main(String[] args) {
+        LinkedList ls = new LinkedList();
+        ls.head = new LinkedList.Node(1);
+        LinkedList.Node second = new LinkedList.Node(2);
+        LinkedList.Node third = new LinkedList.Node(3);
+
+        ls.head.next = second;
+        second.next = third;
+        //third.next = ls.head;  // Cycle case
+        third.next = null;       // No Cycle Case
+
+        System.out.println(checkCycle(ls));
+
+        System.out.println((middleLinkedList(ls)).value);
+
+
+    }
+
+    //Check Cycle Function
+    static boolean checkCycle(LinkedList ls){
+        LinkedList.Node slow = ls.head;    //Slow Pointer
+        LinkedList.Node fast = ls.head.next;//Fast Pointer
+        while(slow!=fast){      //As long as fast pointer doesn't lap slow pointer
+            if(fast == null || fast.next == null){
+                return false;
+            }
+            slow= slow.next;
+            fast= fast.next.next;
+        }
+        return true;
+    }
+
+    static LinkedList.Node middleLinkedList(LinkedList ls){
+        LinkedList.Node slow = ls.head;
+        LinkedList.Node fast = ls.head.next;
+
+        while(fast != null && fast.next != null){
+            slow = slow.next;  //Slow pointer iteration
+            fast = fast.next.next; // Fast pointer Iteration
+        }
+
+        return slow; // returns middle
+    }
+}
+.............................................................................................................
