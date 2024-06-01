@@ -62,96 +62,260 @@ Next: if null, then last node -> Useful for iteration
 Operations : Code
 
 
-public class LinkedList {
-  Node head; //Node Head is mentioned in Linked List Class
-  static class Node{
-      int value; // value of Node
-      Node next; // Reference to the next node
 
-      Node(int d){ // Constructor
-          value = d;
-          next = null;
-      }
-  }
+public class LinkedList { // LinkedList Data Structure as a Java Class
+    Node head; //Node Head is mentioned in Linked List Class
+    static class Node{ //Node Structure
+        int value; // value of Node
+        Node next; // Reference to the next node
 
-  public static void main(String[] args) {
-      LinkedList ls = new LinkedList(); // create an object of LinkedList
-      ls.head = new Node(1);
-      Node first = new Node(2);
-      Node second = new Node(3);
-      ls.head.next = first;
-      first.next = second;
+        Node(int d){ // Constructor
+            value = d;
+            next = null;
+        }
+    }
 
-      printNodes(ls.head);
+    public static void main(String[] args) {
+        LinkedList ls = new LinkedList(); // create an object of LinkedList
+        ls.head = new Node(1);         // Creating head
+        Node second = new Node(2);       // creating second node
+        Node Third = new Node(3);      // creating third node
+        ls.head.next = second;            // Connecting the nodes
+        second.next = Third;               // Connecting the third node
+        
+        //Print the nodes
+        printNodes(ls.head);
 
-      insertAtBeginning(ls, 6);
-      System.out.println();
-      printNodes(ls.head);
+        //Insert Beginning
+        insertAtBeginning(ls, 6);
+        System.out.println();
+        printNodes(ls.head);
+        
+        //Insert End
+        insertAtEnd(ls,69);
+        System.out.println();
+        printNodes(ls.head);
 
-      insertAtEnd(ls,69);
-      System.out.println();
-      printNodes(ls.head);
+        insertAtK(ls,96,2);
+        System.out.println();
+        printNodes(ls.head);
 
-      insertAtK(ls,96,2);
-      System.out.println();
-      printNodes(ls.head);
+        deleteFromBeginning(ls);
+        System.out.println();
+        printNodes(ls.head);
 
-      deleteFromBeginning(ls);
-      System.out.println();
-      printNodes(ls.head);
+        deleteFromEnd(ls);
+        System.out.println();
+        printNodes(ls.head);
 
-      deleteFromEnd(ls);
-      System.out.println();
-      printNodes(ls.head);
-  }
+        deleteFromK(ls,2);
+        System.out.println();
+        printNodes(ls.head);
 
-  static void printNodes(Node node) { // function to print all nodes in the linked list
-      Node ptr = node;
-      while (ptr != null) {
-          System.out.print(ptr.value + " --> ");
-          ptr = ptr.next;
-      }
-  }
+        searchNode(ls,3);
+        System.out.println();
 
-  static void insertAtBeginning(LinkedList ls, int val){
-      Node newnode = new Node(val);
-      newnode.next = ls.head;
-      ls.head=newnode;
-  }
+        sortLinkedList(ls);
+        System.out.println();
+        printNodes(ls.head);
+    }
 
-  static void insertAtEnd(LinkedList ls , int val){
-      Node  newnode = new Node(val);
-      Node i = ls.head;
-      while(i.next!=null){
-          i = i.next;
-      }
-      i.next = newnode;
-  }
+    static void printNodes(Node node) { // function to print all nodes in the linked list
+        Node ptr = node;
+        while (ptr != null) {
+            System.out.print(ptr.value + " --> ");
+            ptr = ptr.next;
+        }
+    }
 
-  static void insertAtK(LinkedList ls, int val , int k){
-      Node newnode = new Node(val);
-      Node node = ls.head;
-      int i = 2;
-      while(i < k){
-          node = node.next;
-          i++;
-      }
-      newnode.next = node.next;
-      node.next = newnode;
-  }
+    static void insertAtBeginning(LinkedList ls, int val){
+        Node newnode = new Node(val);
+        newnode.next = ls.head;
+        ls.head=newnode;
+    }
 
-  static void deleteFromBeginning(LinkedList ls){
-      ls.head = ls.head.next;
-  }
+    static void insertAtEnd(LinkedList ls , int val){
+        Node  newnode = new Node(val);
+        Node node = ls.head;
+        while(node.next!=null){
+            node = node.next;
+        }
+        node.next = newnode;
+    }
 
-  static void deleteFromEnd(LinkedList ls){
-      Node node = ls.head;
-      while(node.next.next !=null){
-          node = node.next;
-      }
-      node.next = null;
-  }
+    static void insertAtK(LinkedList ls, int val , int k){
+        Node newnode = new Node(val);
+        Node node = ls.head;
+        int i = 2;
+        while(i < k){
+            node = node.next;
+            i++;
+        }
+        newnode.next = node.next;
+        node.next = newnode;
+    }
 
+    static void deleteFromBeginning(LinkedList ls){
 
+        ls.head = ls.head.next;
+    }
 
+    static void deleteFromEnd(LinkedList ls){
+        Node node = ls.head;
+        while(node.next.next !=null){
+            node = node.next;
+        }
+        node.next = null;
+    }
+
+    static void deleteFromK(LinkedList ls, int k){
+        Node node = ls.head;
+        if(k == 1){
+            deleteFromBeginning(ls);
+        }
+        else {
+            for (int i = 2; i < k; i++) {
+                if (node.next != null) {
+                    node = node.next;
+                }
+            }
+            if(node.next == null){
+                    deleteFromEnd(ls);
+                }
+            else {
+                node.next = node.next.next;
+                }
+        }
+    }
+
+    static void searchNode(LinkedList ls, int key){
+        Node node = ls.head;
+        int i = 1;
+        while(node!=null){
+            if(node.value == key){
+                System.out.println("Node found at "+i);
+            }
+            i++;
+            node = node.next;
+        }
+    }
+
+    static void sortLinkedList(LinkedList ls) {
+        Node node = ls.head;
+        Node nextNode = null;
+        while (node != null) {
+            nextNode = node.next;
+            while (nextNode != null) {
+                if (node.value > nextNode.value) {
+                    int temp = node.value;
+                    node.value = nextNode.value;
+                    nextNode.value = temp;
+                }
+                nextNode = nextNode.next;
+            }
+            node = node.next;
+        }
+    }
 }
+............................................................................................
+
+Doubly linked List:
+
+Two pointers , Prev and Next
+
+Code for simple implementation:
+public class DoublyLinkedList {
+    static class Node{
+        Node prev;  //previous node
+        Node next;  //next node
+        int value;  //node value
+
+        Node(int val) {
+            value = val;
+        }
+    }
+    Node head = null;
+
+    public static void main(String[] args) {
+        DoublyLinkedList dls = new DoublyLinkedList(); //Object of DLS, that is creating a dls
+        
+        //Creating the nodes
+        dls.head = new Node(1);
+        Node second = new Node(2);
+        Node third = new Node(3);
+        
+        // Connecting the nodes
+        dls.head.prev=null;
+        dls.head.next=second;
+        
+        second.prev=dls.head;
+        second.next=third;
+        
+        third.prev=second;
+        third.next=null;
+    }
+}
+
+..........................................................................................................
+
+Circular Linked List:
+
+In circular singly linked list:
+    Last node.next is head (last node connected to head)
+
+In circular doubly linked list:
+    Last node.next is head (Last node next is head)
+    Head.prev is Last node (Head prev is last node)
+
+......................................................................
+
+Linked List Collection in Java
+
+We use LinkedList collection in Java to deal with linkedlists
+uses Doubly Linked List Data Structure
+Code Operations:
+
+
+import java.util.LinkedList;
+public class CollectionLinkedList {
+    public static void main(String[] args) {
+        LinkedList<Integer> ls = new LinkedList<>();
+
+        //Add elements
+        ls.add(1);
+        ls.add(2);
+        ls.add(3);
+        ls.add(4);
+        ls.add(5);
+
+        System.out.println(ls);
+
+        //add(index,e)
+        ls.add(5,6);
+
+        System.out.println(ls);
+
+        //Access Elements
+
+        System.out.println(ls.get(3));
+        System.out.println(ls.peek());
+        System.out.println(ls.peekLast());
+
+        //remove elements
+
+        ls.remove();
+        ls.removeLast();
+        ls.removeFirstOccurrence(4);
+        ls.remove(1);
+        System.out.println(ls);
+
+        //others
+
+        System.out.println(ls.size());
+        ls.clear();
+        System.out.println(ls.isEmpty());
+    }
+}
+
+.........................................................................
+

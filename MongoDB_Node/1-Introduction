@@ -1,0 +1,19 @@
+MongoSh -> Mongo shell to connect to mongo db cluster
+MongoDb Atlas:
+-> Developer data platform
+-> DBaas 
+-> Replica set -> data stored in more than one server, data redundacy
+-> Types:
+    cluster -> Shared M0 / Dedicated M10
+    Serverless
+
+-> Change as Scale, using Cloud providers
+-> Backups,Online Archive, CLI and Administration Applications
+-> Other Services:
+    Atlas Search 
+    Atlas Vector Search
+    Atlas Stream
+    Atlas Edge Server 
+    Atlas Data Lake
+    Atlas Charts
+    
