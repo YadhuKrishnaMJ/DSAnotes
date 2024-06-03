@@ -1,0 +1,60 @@
+Tree:
+-Non Linear Data Structure
+-Nodes and Edges
+-Quicker and easier access, Compared to sequential access in Linear Datastructures
+
+Nodes:
+    Leaf Nodes:
+        Last nodes of each path
+
+    Internal Nodes:
+        Nodes having atleats one child
+
+    Root Node:
+        Topmost Node
+
+    Edge:
+        Link between Nodes
+
+    Height of a Node:
+        Number of edges to deepest Leaf
+
+    Depth of a Node:
+        No of edges from root to the Node
+
+    Height of a Tree:
+        Height of rootnode/ Depth of deepest leaf nodes
+
+    Degree of a Node:
+        No of branches to the Node
+
+    Forest:
+        A collection of disjoint trees
+        Cut the root node to create a Forest
+    
+.........................................................................................
+
+Types of Trees:
+    Binary tree
+    Binary Search Tree
+    AVL Tree
+    B-Tree
+
+.........................................................................................
+
+Tree Traversal:
+    Visiting Nodes in a Tree
+
+..........................................................................................
+
+Tree Applications:
+    Element present or not, Checks faster than linear data Structure
+    Heap -> Heap sort 
+    Tries -> Modern day routers
+    B-Trees, T-Trees -> Most DBMS use it
+    Syntax trees -> Compilers
+.............................................................................................
+
+    
+
+    
