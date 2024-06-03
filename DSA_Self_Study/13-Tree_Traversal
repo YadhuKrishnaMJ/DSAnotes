@@ -1,0 +1,12 @@
+Tree Traversal:
+        Visiting every node in a Tree
+
+Basic Tree Data Structure:
+    Node:
+        value
+        left subtree
+        right subtree
+    
+Types of Traversal:
+    Inorder Traversal:
+        
