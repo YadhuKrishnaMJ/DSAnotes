@@ -1,0 +1,38 @@
+Binary Tree:
+    Structure:
+        Data item
+        Left Node
+        Right Node
+
+    Types:
+        Full Binary Tree:
+            Has either 2 nodes or no nodes
+
+        Perfect Binary Tree:
+            Exactly 2 nodes for each internal node
+
+        Complete Binary Tree:
+            Full binary Tree + Lean Left + Every Level Filled
+
+        Degenerate/Pathological Tree:
+            Single child either left or right
+
+        Skewed Binary tree:
+            Left Skewed BT:
+                All left child nodes
+            Right Skewed BT:
+                All right Child nodes
+
+        Balanced Binary Tree:
+            Difference between left and right subtree height is 0/1
+
+.......................................................................................
+
+
+Applications of Binary Tree:
+    Easy and fast access of data
+    router algorithms
+    Heap Data Structure
+    Syntax tree
+
+.......................................................................................
