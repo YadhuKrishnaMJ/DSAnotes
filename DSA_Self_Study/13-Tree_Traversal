@@ -9,4 +9,107 @@ Basic Tree Data Structure:
     
 Types of Traversal:
     Inorder Traversal:
+        Left -> Root -> right
+        Function wise:
+            inorder(root->left)
+            inorder(root->data)
+            inorder(root->right)
+
+    Preorder Traversal:
+        Root -> Left -> right
+        Function Wise:
+            preorder(root->data)
+            preorder(root->left)
+            preorder(root->right)
+
+    Postorder Traversal:
+        Left -> Right -> Root
+        Function wise:
+            preorder(root->Left)
+            preorder(root->Right)
+            preorder(root->data)
+            
+    Use Stack to Visualize Traversal
+......................................................................
+
+Tree traversal Code:
+
+public class TreeTraversal {
+    public static void main(String[] args) {
+        //Create object of Binary Tree
+        BinaryTree bt = new BinaryTree();
+        //Create the nodes
+        bt.root = new Node(1);
+        bt.root.left = new Node(12);
+        bt.root.right = new Node(9);
+        bt.root.left.left = new Node(5);
+        bt.root.left.right = new Node(6);
+        
+        //Traversals
+        System.out.println("Inorder Traversal:");
+        bt.inorder(bt.root);
+
+        System.out.println("Preorder Traversal:");
+        bt.preorder(bt.root);
+
+        System.out.println("Postorder Traversal:");
+        bt.postorder(bt.root);
+    }
+}
+
+//Node Definition
+class Node {
+    int val;
+    Node left;
+    Node right;
+
+    //Constructor
+    Node(int k){
+        val = k;
+        left = right = null;
+    }
+}
+
+//Binary Tree Definition
+class BinaryTree{
+    Node root;
+
+    //Constructor
+    BinaryTree(){
+        root = null;
+    }
+
+    //postorder traversal
+    void postorder(Node node){
+        if(node == null){
+            return ;
+        }
+        postorder(node.left);
+        postorder(node.right);
+        System.out.println(node.val);
+    }
+    //Inorder Traversal
+    void inorder(Node node){
+        if(node == null){
+            return ;
+        }
+        inorder(node.left);
+        System.out.println(node.val);
+        inorder(node.right);
+    }
+    //Preorder Traversal
+    void preorder(Node node){
+        if(node == null){
+            return ;
+        }
+        System.out.println(node.val);
+        preorder(node.left);
+        preorder(node.right);
+    }
+}
+................................................................................................
+
+
+
+
         
