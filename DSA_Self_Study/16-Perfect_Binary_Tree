@@ -1,0 +1,65 @@
+Perfect Binary tree:
+    All internal node has exactly two child nodes
+        ie Degree of 2
+    Recursively:
+        1. Single node -> Perfect binary tree of height 0
+        2.  h > 0:
+                both subtree height = h - 1
+                Subtree non overlapping
+....................................................................................
+Code to check perfect Binary Tree:
+
+
+public class PerfectBinaryTree {
+    public static void main(String[] args) {
+        Node root = new Node(1);
+        root.left = new Node(2);
+        root.right = new Node(3);
+        root.left.left = new Node(4);
+        root.left.right = new Node(5);
+        root.right.left = new Node(6);
+        //root.right.right = new Node(7);
+
+        System.out.println(is_Perfect(root));
+    }
+
+    static class Node {
+        int val;
+        Node left;
+        Node right;
+
+        Node(int val) {
+            this.val = val;
+            left = right = null;
+        }
+    }
+
+    // Function to calculate the depth of the tree
+    static int depth(Node node) {
+        if (node == null)
+            return 0;
+        int leftDepth = depth(node.left);
+        int rightDepth = depth(node.right);
+        return Math.max(leftDepth, rightDepth) + 1;
+    }
+
+    // Function to check if the binary tree is perfect
+    static boolean is_Perfect(Node node) {
+        int d = depth(node);
+        return is_perfect(node, d, 0);
+    }
+
+    // Helper function to check if the binary tree is perfect recursively
+    static boolean is_perfect(Node node, int d, int level) {
+        if (node == null)
+            return true;
+        if (node.left == null && node.right == null)
+            return d == level + 1;
+        if (node.left == null || node.right == null)
+            return false;
+        return is_perfect(node.left, d, level + 1) && is_perfect(node.right, d, level + 1);
+    }
+}
+
+............................................................................................................
+
