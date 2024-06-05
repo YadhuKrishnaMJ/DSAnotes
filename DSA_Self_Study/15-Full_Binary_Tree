@@ -1,0 +1,76 @@
+Full binary Tree/Proper binary tree:
+    2 children/no children
+
+    Theorems:
+        i = no. of internal nodes
+        n = total no of nodes
+        l = no. of leaf nodes
+        d = no of levels
+
+
+        leaves = i + 1
+        total nodes = 2i + 1  
+        internal nodes = (n - 1)/2
+        leaves = (n + 1)/2
+        nodes = 2l - 1
+        internal nodes = l - 1
+        leaves atmost = 2^(d-1)
+
+...........................................................................
+Check full binary Tree Code:
+
+public class FullBinaryTree {
+    public static void main(String[] args) {
+        BinaryTree bt = new BinaryTree();
+        bt.root = new Node(1);
+        bt.root.left = new Node(2);
+        bt.root.right = new Node(3);
+        bt.root.right.right = new Node(4);
+
+        System.out.println(bt.checkFullBinaryTree(bt.root));
+    }
+}
+
+// Node Structure
+class Node{
+    int value;
+    Node left;
+    Node right;
+
+    //Node Constructor
+    Node(int k){
+        value = k;
+        left = right = null;
+    }
+}
+
+
+//Binary Tree structure
+class BinaryTree{
+    //Root Node
+    Node root;
+
+    BinaryTree(){
+        root = null;
+    }
+    //CheckFullBinaryTree function
+    boolean checkFullBinaryTree(Node node){
+        if(node == null){
+            return true;
+        }
+        else if(node.left == null && node.right == null){  // Logic is to check if a node has null on both sides to be full
+            return true;
+        }
+        else if(node.left != null && node.right != null){
+            return checkFullBinaryTree(node.left) && checkFullBinaryTree(node.right);
+        }
+        else{
+            return false;
+        }
+    }
+}
+
+..............................................................................................................................
+
+
+
