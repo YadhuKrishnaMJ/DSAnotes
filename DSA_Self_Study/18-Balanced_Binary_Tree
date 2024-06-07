@@ -1,3 +1,69 @@
 Balanced Binary Tree:
     Difference between height of left and right subtree should be same
-    
+.....................................................................
+
+Code:
+
+public class Balanced_Binary_tree {
+    public static void main(String[] args) {
+
+        binaryTree bt = new binaryTree();
+        bt.root = new Node(1);
+        bt.root.left = new Node(2);
+        bt.root.right = new Node(3);
+        bt.root.left.left = new Node(4);
+        bt.root.left.right = new Node(5);
+        bt.root.right.left = new Node(6);
+        bt.root.right.right = new Node(7);
+
+        System.out.println(bt.isBalancedBinaryTree(bt.root));
+    }
+}
+
+class Node{
+    int value;
+    Node left;
+    Node right;
+
+    Node(int k){
+        value = k;
+        left = right = null;
+    }
+}
+
+class binaryTree{
+    Node root;
+    binaryTree(){
+        root = null;
+    }
+
+    boolean isBalancedBinaryTree(Node node){
+        return checkHeight(node) != -1;
+    }
+
+    int checkHeight(Node node){
+        if(node == null){
+            return 0;
+        }
+        //Left Subtree
+        int leftHeight = checkHeight(node.left);
+        if(leftHeight == -1){
+            return -1;
+        }
+        //Right Subtree
+        int rightHeight = checkHeight(node.right);
+        if(rightHeight == -1){
+            return -1;
+        }
+        if(Math.abs(leftHeight - rightHeight)>1){
+            return -1;
+        }
+        return Math.max(leftHeight,rightHeight) + 1;
+
+    }
+}
+
+
+.................................................................................
+
+
