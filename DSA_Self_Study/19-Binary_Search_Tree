@@ -1,0 +1,159 @@
+Binary Search Tree:
+    Each Node maximum 2 child
+    O Logn search time
+    
+    All nodes left of root is less than root
+    all nodes right of root is more than root
+......................................................................
+
+Search Operation:
+    If root == NULL 
+    return NULL;
+    If number == root.data 
+    return root.data;
+    If number < root.data 
+    return search(root.left)
+    If number > root.data 
+    return search(root.right)
+
+......................................................................
+
+Insert Operation:
+    If node == NULL 
+    return createNode(data)
+    if (data < node->data)
+    node->left  = insert(node->left, data);
+    else if (data > node->data)
+    node->right = insert(node->right, data);  
+    return node;
+
+.......................................................................
+
+Deletion Operation:
+    Case 1: Leaf Node   
+        Simply Delete the node
+
+    Case 2: Has 1 child node    
+        Replace with child node + Delete the Child Node
+
+    Case 3: Node with 2 childs
+        replace with inorder Successor + Remove Inorder Successor
+        
+            Note:If the node has a right subtree, the inorder successor is the leftmost node in the right subtree.
+                 If the node does not have a right subtree, the inorder successor is one of its ancestors. Specifically, it is the lowest ancestor for which the given node would be in the left subtree.
+..........................................................................
+Code:
+
+public class BST {
+    public static void main(String[] args) {
+        binarySearchTree bt = new binarySearchTree();
+
+        bt.insert(1);
+        bt.insert(5);
+        bt.insert(60);
+        bt.insert(28);
+        bt.insert(14);
+        bt.insert(12);
+
+        System.out.println("Traversal:");
+        bt.inorder();
+
+        bt.delete(28);
+        System.out.println("After deletion:");
+        bt.inorder();
+    }
+}
+
+class Node {
+    int value;
+    Node left;
+    Node right;
+
+    Node(int k) {
+        value = k;
+        left = right = null;
+    }
+}
+
+class binarySearchTree {
+    Node root;
+
+    binarySearchTree() {
+        root = null;
+    }
+
+    // Wrapper function for insertion
+    void insert(int value) {
+        root = insertKey(value, root);
+    }
+
+    // Insertion function
+    Node insertKey(int value, Node node) {
+        if (node == null) {
+            node = new Node(value);
+            return node;
+        }
+        if (value < node.value) {
+            node.left = insertKey(value, node.left);
+        } else if (value > node.value) {
+            node.right = insertKey(value, node.right);
+        }
+        return node;
+    }
+
+    void inorder() {
+        inorderFunction(root);
+    }
+
+    // Inorder function
+    void inorderFunction(Node node) {
+        if (node != null) {
+            inorderFunction(node.left);
+            System.out.println(node.value);
+            inorderFunction(node.right);
+        }
+    }
+
+    int minVal(Node node) {
+        int min = node.value;
+        while (node.left != null) {
+            node = node.left;
+            min = node.value;
+        }
+        return min;
+    }
+
+    void delete(int value) {
+        root = deleteKey(value, root);
+    }
+
+    Node deleteKey(int value, Node node) {
+        if (node == null) {
+            return node;
+        }
+
+        if (value < node.value) {
+            node.left = deleteKey(value, node.left);
+        } else if (value > node.value) {
+            node.right = deleteKey(value, node.right);
+        } else {
+            // Node with only one child or no child
+            if (node.left == null) {
+                return node.right;
+            } else if (node.right == null) {
+                return node.left;
+            }
+
+            // Node with two children, get the inorder successor (smallest in the right subtree)
+            node.value = minVal(node.right);
+
+            // Delete the inorder successor
+            node.right = deleteKey(node.value, node.right);
+        }
+
+        return node;
+    }
+}
+
+....................................................................................................................................
+
