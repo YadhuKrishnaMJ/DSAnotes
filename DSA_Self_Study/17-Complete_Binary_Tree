@@ -1,0 +1,77 @@
+Complete Binary Tree:
+    Might not have right node in leaf level + Lean Left
+    used in Heap/Heap Sort
+    
+    Relation of Array indexes and Tree Element:
+        index of node => i
+        left child => 2*i + 1
+        right child => 2*i + 2
+
+        Parent of node => (i-1)/2
+..............................................................................
+
+Code to check if a binary tree is Complete:
+
+public class CompleteBinaryTree {
+    public static void main(String[] args) {
+        BinaryTree bt = new BinaryTree();
+        bt.root = new Node(1);
+        bt.root.left = new Node(2);
+        bt.root.right = new Node(3);
+        bt.root.left.left = new Node(4);
+        bt.root.left.right = new Node(5);
+        bt.root.right.left = new Node(6);
+
+        int nodesCount = bt.countNodes(bt.root);
+
+        System.out.println(bt.checkCompleteBinaryTree(bt.root,0,nodesCount));
+    }
+}
+
+class Node{
+    int value;
+    Node left;
+    Node right;
+
+    Node(int k){
+        value = k;
+        left = right = null;
+    }
+}
+
+class BinaryTree{
+    Node root;
+
+    BinaryTree(){
+        root = null;
+    }
+
+    //Function to count no of nodes
+    int countNodes(Node node){
+        if(node == null){
+            return 0;
+        }
+        else{
+            return(1 + countNodes(node.left) + countNodes(node.right)); //for every node we are adding 1
+        }
+    }
+
+    //Function to check if a Tree is Complete Binary Tree
+    boolean checkCompleteBinaryTree(Node node, int index, int nodeCount){
+        if(node == null){
+            return true;
+        }
+        
+        //if index exceeds no of count, then its not a complete binary tree
+        if(index >= nodeCount){
+            return false;
+        }
+        //use 2*i + 1 or 2 formula for iterating to each node recursively
+        return checkCompleteBinaryTree(node.left, 2*index + 1 , nodeCount) &&  checkCompleteBinaryTree(node.right, 2*index + 2 , nodeCount);
+    }
+
+
+
+}
+.................................................................................................................................................
+
