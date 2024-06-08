@@ -1,0 +1,65 @@
+DFS:
+Depth First Search
+
+Visits the deepest node before backtarcking
+Can be implemented using recursion, explicit stack
+
+
+Recusion can be postorder,inorder or preorder
+...............................................................................
+Recursion Code:
+
+
+public class DepthFirstSearch {
+    public static void main(String[] args) {
+        Tree mytree = new Tree();
+        mytree.root = new Node(1);
+        mytree.root.left = new Node(2);
+        mytree.root.right = new Node(3);
+        mytree.root.left.left = new Node(4);
+        mytree.root.left.right = new Node(5);
+        mytree.root.right.left = new Node(6);
+        mytree.root.right.right = new Node(7);
+
+        mytree.depthFirstSearch();
+    }
+}
+
+class Node{
+    int value;
+    Node left;
+    Node right;
+
+    Node(int k){
+        value = k;
+        left = right = null;
+    }
+}
+
+class Tree{
+    Node root;
+    //Constructor
+    Tree(){
+        root = null;
+    }
+    void depthFirstSearch(){
+        depthFirstSearchHelper(root);
+    }
+    private void depthFirstSearchHelper(Node root){
+        if(root == null){
+            return;
+        }
+        System.out.print(root.value + "->" );
+        depthFirstSearchHelper(root.left);
+        depthFirstSearchHelper(root.right);
+    }
+}
+
+.........................................................................................
+Applications:
+    Path finding
+    Topological Sorting
+    Cycle Detection
+    Graph coloring
+    AI and game logic etc  
+..........................................................................................

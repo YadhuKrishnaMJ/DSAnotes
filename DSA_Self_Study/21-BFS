@@ -1,0 +1,84 @@
+BFS:
+    Breadth First Search
+    Searches every neighbour nodes before going deeper/iterating to the next level
+    Implemented using Queue 
+    Maintains Visited list to check which nodes are Visited
+
+    Algorithm:
+        init queue with root node
+        while queue is not empty:
+            Dequeue a node from front 
+            print its value
+            enqueue all its unvisited neighbours
+............................................................................................
+
+import java.util.*;
+public class breadthFirstSearch {
+    public static void main(String[] args) {
+        binaryTree bt = new binaryTree();
+        bt.root = new Node(1);
+        bt.root.left = new Node(2);
+        bt.root.right = new Node(3);
+        bt.root.left.left = new Node(4);
+        bt.root.left.right = new Node(5);
+
+        bt.breadthFirstSearch();
+    }
+}
+
+class Node{
+    int value;
+    Node left;
+    Node right;
+
+    Node(int k){
+        this.value = k;
+        this.left = this.right = null;
+    }
+}
+
+class binaryTree{
+    Node root;
+    binaryTree(){
+        root = null;
+    }
+
+    void breadthFirstSearch(){
+        breadthFirstSearchHelper(this.root);
+    }
+
+    private void breadthFirstSearchHelper(Node root){
+        if(root == null){
+            return;
+        }
+        else{
+            Queue<Node> queue = new LinkedList<>();
+            queue.add(root);
+            while(!(queue.isEmpty())){
+                //Remove and store the front node in list
+                Node curr = queue.poll();
+
+                //Print the current value
+                System.out.print(curr.value + " " );
+
+                //Add left node if present
+                if(curr.left != null){
+                    queue.add(curr.left);
+                }
+                //Add right node if present
+                if(curr.right != null){
+                    queue.add(curr.right);
+                }
+            }
+        }
+    }
+}
+
+
+....................................................................................................................
+Application of BFS:
+    Shortest Path
+    Level order traversal
+    Connected Components , graph Theory
+
+.....................................................................................................................
