@@ -1,0 +1,96 @@
+Binary Search Tree:
+    Treeset and Treemap -> Java Reb black tree implementations
+................................................................
+
+Treeset:
+    Elements sorted in ascending order
+    time complexity of operations - O log(n)
+        Features:
+            Sorted order
+            Unique Elements
+            Performance
+    
+...............................................................
+
+Treeset collection in java with operations implementations:
+
+import java.util.TreeSet;
+
+public class Main{
+    public static void main(String[] args) {
+        //Create a tree set
+        TreeSet<Integer> ts = new TreeSet<>();
+
+        //Adding elements
+        ts.add(1);
+        ts.add(4);
+        ts.add(3);
+        ts.add(2);
+        ts.add(7);
+        ts.add(6);
+
+        //Printing elements
+        System.out.println(ts);
+
+        //Remove elements
+        ts.remove(6);
+
+        //Contains function
+        System.out.println(ts.contains(6));
+
+        //iterating
+        for(int i : ts){
+            System.out.print(i + " ");
+        }
+
+        //subset
+        System.out.println();
+        System.out.println(ts.subSet(1,3));
+
+
+    }
+}
+
+......................................................................
+
+TreeMap:
+    Navigable map based on reb black tree
+    Log(n) complexity for basic operations
+    sorted order
+    Key - value pairs
+....................................................................
+
+Example Code:
+
+import java.util.Map;
+import java.util.TreeMap;
+
+public class Main{
+    public static void main(String[] args) {
+        // create the Map
+        TreeMap<Integer,String> tm = new TreeMap<>();
+
+        //Add elements
+
+        tm.put(1,"One");
+        tm.put(3,"Three");
+        tm.put(2,"Two");
+        tm.put(4,"Four");
+        tm.put(5,"Five");
+
+        //Remove Elements
+
+        tm.remove(5);
+
+        //Get value of a key
+        System.out.println(tm.get(3));
+
+        //Iterating
+        for(Map.Entry<Integer,String> entry : tm.entrySet()){
+            System.out.println(entry.getKey() + "=>" + entry.getValue());
+        }
+    }
+}
+
+..........................................................................................................
+
