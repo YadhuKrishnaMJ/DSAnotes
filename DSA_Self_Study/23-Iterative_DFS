@@ -1,0 +1,73 @@
+Iterative DFS:
+    We use Stack to implement DFS than using recursion
+    Use Java collection stack to implement the logic
+...............................................................
+
+import java.util.Stack;
+
+public class Main{
+    public static void main(String[] args) {
+        Tree tree = new Tree();
+        tree.root = new Node(0);
+        tree.root.left = new Node(1);
+        tree.root.right = new Node(2);
+        tree.root.left.left = new Node(3);
+        tree.root.left.right = new Node(4);
+
+        tree.iterativeDFS();
+
+    }
+}
+
+class Node{
+    int value;
+    Node left;
+    Node right;
+
+    Node(int k){
+        value = k;
+        left = right = null;
+    }
+}
+
+class Tree{
+    Node root;
+    Tree(){
+        root = null;
+    }
+    void iterativeDFS(){
+        iterativeDFSHelper(root);
+    }
+    private void iterativeDFSHelper(Node root){
+        //Check if the root is null
+        if(root == null){
+            return;
+        }
+        //Create a stack
+        Stack<Node> stack = new Stack<>();
+
+        //Add root to the stack
+
+        stack.add(root);
+
+        //While stack is not empty iterate
+
+        while(!(stack.isEmpty())){
+            //Store current Node and Process it
+            Node curr = stack.pop();
+            System.out.print(curr.value + " ");
+
+            //Add its Left and Right child nodes for processing
+
+            if(curr.left != null){
+                stack.push(curr.left);
+            }
+            if(curr.right != null){
+                stack.push(curr.right);
+            }
+
+        }
+    }
+}
+
+..................................................................................................................

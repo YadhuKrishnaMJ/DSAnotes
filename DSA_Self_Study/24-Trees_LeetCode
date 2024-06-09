@@ -1,0 +1,156 @@
+Inverting a Binary Tree: Leetcode 226
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public TreeNode invertTree(TreeNode root) {
+        //Check if root is null
+        if(root==null){
+            return null;
+        }
+        //Swap left and right childs
+        TreeNode temp = root.left;
+        root.left = root.right;
+        root.right = temp;
+
+        //Recursively call left subtree and right Subtree
+
+        invertTree(root.left);
+        invertTree(root.right);
+        return root;
+    }
+}
+............................................................................................
+
+Maximum depth in a binary tree: Leetcode 104
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public int maxDepth(TreeNode root) {
+        //return 0 if the root node is null (0 depth)
+        if(root == null){
+            return 0;
+        }
+        //Add 1 + max of left subtree and right subtree
+        return 1 + Math.max(maxDepth(root.left),maxDepth(root.right));
+        
+    }
+}
+
+................................................................................................
+
+Balanced binary Tree Problem:
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public boolean isBalanced(TreeNode root) {
+        // Call checkHeight function
+        if(checkHeight(root) == -1){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+    private int checkHeight(TreeNode root){
+        //Return 0 for null root
+        if(root == null){
+            return 0;
+        }
+        //recursively call left subtree
+        int leftHeight = checkHeight(root.left);
+        if(leftHeight == -1){  //if -1, the subtree is unbalanced
+            return -1;
+        } 
+
+        //Same logic in Right Tree
+        int rightHeight = checkHeight(root.right);
+        if(rightHeight == -1){
+            return -1;
+        }
+        //find difference between left height and right height if greater than 1
+        if(Math.abs(leftHeight - rightHeight) > 1 ){
+            return -1;
+        }
+        //Return height of current node
+        return 1 + Math.max(leftHeight,rightHeight);
+    }
+}
+..................................................................................................
+To check if two trees are equal:
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+        //if both left and right nodes are null, return true
+        if(p == null && q == null){
+            return true;
+        }
+        //If only one null, then false
+        if(p == null || q == null){
+            return false;
+        }
+        //Compare values
+        if(p.val != q.val){
+            return false;
+        }
+        //Return recursively for left and right subtree
+        return isSameTree(p.left,q.left) && isSameTree(p.right,q.right);
+    }
+}
+...................................................................................................
