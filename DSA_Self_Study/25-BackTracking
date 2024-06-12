@@ -1,0 +1,162 @@
+Backtracking:
+    Used in Search Problems
+    Recursively Try out solutions (multiple solutions)
+    Used in Solcing Constraint Satisfaction Problems
+    Brute Force Approach
+
+State Space Tree:
+    Tree representing all possible states
+    
+Backtracking Algorithm:
+    Backtrack(x)
+    if x is not a solution
+        return false
+    if x is a new solution
+        add to list of solutions
+    backtrack(expand x)
+
+
+...................................................................
+Backtracking in Tree Maze Problem:
+    Find Possible paths from root to leaf node, Visiting nodes only once:
+
+Code:
+
+import java.util.ArrayList;
+public class Main{
+    public static void main(String[]  args){
+        Node root = new Node(0);
+        root.children.add(new Node(1));
+        root.children.add(new Node(2));
+        root.children.add(new Node(3));
+        root.children.get(0).children.add(new Node(4));
+        root.children.get(0).children.add(new Node(5));
+        root.children.get(1).children.add(new Node(6));
+
+        //Create a Solution List
+        ArrayList<Integer> path = new ArrayList<>();
+
+        //Check if solution is found
+        if(backtrack(root,path)){
+            System.out.println("The path found is:"+path);
+        }
+        else{
+            System.out.println("No Path found!");
+        }
+    }
+
+    static boolean backtrack(Node node,ArrayList<Integer> path){
+        //Return False if the node is null
+        if(node == null){
+            return false;
+        }
+        //Add current node to the path List
+        path.add(node.value);
+
+        //If node's children is not present, we reached a leaf , hence true
+        if(node.children.isEmpty()){
+            return true;
+        }
+        //For every Child node, backtrack and check if it's a valid solution
+        else{
+            for(Node child : node.children){
+                if(backtrack(child,path)){
+                    return true;
+                }
+            }
+            //if none of the above case true, then not a viable solution hence, remove this solution(node)
+            path.removeLast();
+            return false;
+        }
+
+    }
+}
+
+class Node{
+    int value;
+    ArrayList<Node> children;
+
+    Node(int k){
+        value = k;
+        children = new ArrayList<>();
+    }
+}
+
+
+.................................................................................................................................
+
+Subset Problem using Backtraking:
+    Code:
+
+    class Solution {
+        public List<List<Integer>> subsets(int[] nums) {
+            //Create a Result Array to store and return the result
+            List<List<Integer>> result = new ArrayList<>();
+            //Backtrack function
+            backtrack(result, new ArrayList<>(), nums, 0);
+            //Return Result
+            return result;
+        }
+    
+        private void backtrack(List<List<Integer>> result, List<Integer> tempList, int[] nums, int start){
+            //Add a copy of Temp list
+            result.add(new ArrayList<>(tempList));
+    
+            //For each element add to the Temp List
+            for(int i = start; i < nums.length; i++){
+                tempList.add(nums[i]);
+    
+                //BackTrack for every i + 1 element
+                backtrack(result,tempList, nums, i + 1);
+    
+                //Remove All element
+                tempList.removeLast();
+            }
+        }
+    }
+
+................................................................................................................................
+
+Permuations:
+    Theory: https://www.youtube.com/watch?v=H232aocj7bQ
+
+Code:
+
+class Solution {
+    public List<List<Integer>> permute(int[] nums) {
+        //Create a New Result Array
+        List<List<Integer>> result = new ArrayList<>();
+        //Call Backtrack
+        backtrack(result, new ArrayList<>(),nums);
+        //Return Result
+        return result;
+    }
+
+    private void backtrack(List<List<Integer>> result , List<Integer> temp, int[] nums){
+        //If temp is same size of nums array, then its a permutation
+        if(temp.size() == nums.length){
+            result.add(new ArrayList<>(temp));
+            return;
+        }
+
+        //Iterate through every element in nums array
+        for(int i:nums){
+
+            //since permutation allows only 1 occurence, therefore check if temp contains it
+            if(temp.contains(i)){
+                continue;
+            }
+            //add number to temp
+            temp.add(i);
+
+            //backtrack to check other number
+            backtrack(result, temp, nums);
+
+            //Remove last element to backtrack
+            temp.removeLast();
+        }
+
+    }
+}
+....................................................................................................................
+

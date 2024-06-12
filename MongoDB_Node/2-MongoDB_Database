@@ -70,6 +70,18 @@ Example:
 .........................................................
 Atlas Data Explorer:
     Interact and manage data using ui 
-    
-
+.........................................................
+Creating a Database:
+    create database from ui 
+    name collections 
+    create
+.........................................................
+Creating collection:
+    select database
+    Create collection
+..........................................................
+Inserting Documents:
+    Click insert Document
+    Edit the Json
+..........................................................
 
