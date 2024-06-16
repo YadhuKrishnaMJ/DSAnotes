@@ -1,0 +1,216 @@
+Copying an Array in JAVA:
+    
+    Arrays.copyOf() method:
+        int[] newarr = Arrays.copyOf(arr,arr.length);
+
+Sorting an Array in JAVA (method):
+
+    Arrays.sort() method:
+        Arrays.sort(arr);
+
+2D array Initialization:
+
+    int[][] arr ={
+        {1,2,3},
+        {4,5,6},
+        {7,8,9}
+    };
+................................................................
+
+Array Rotation using Temproary Array:
+
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args) {
+        int[] arr = {1,2,3,4,5};
+        ArrayOperations array = new ArrayOperations();
+        array.rotateRight(arr,2);
+        for(int i: arr){
+            System.out.print(i + " " );
+        }
+
+    }
+}
+
+class ArrayOperations{
+
+    //function to rotate the elements to left by s
+    void rotateLeft(int[] arr, int s){
+
+        //create a temporary array to
+        int n = arr.length;
+        s = s % n;
+
+        if(s == 0){
+            return;
+        }
+
+        //create temp array to store rotation
+        int[] temp = new int[s];
+
+        //Store the elements into temp
+        for(int i = 0; i < s; i++){
+            temp[i] = arr[i];
+        }
+
+        //Shift elements to left in original array
+        for(int i = s; i < n; i++){
+            arr[i-s] = arr[i];
+        }
+
+        //change elements in end of arr using temp arr
+        //
+        for(int i = 0; i < temp.length; i++){
+            arr[n - s + i] = temp[i];
+        }
+    }
+
+    void rotateRight(int[] arr, int s){
+        int n = arr.length;
+        s = s % n;
+        int[] temp = new int[s];
+
+        //Store elements in array
+        for(int i = 0; i < temp.length; i++){
+            temp[i] = arr[n - s + i];
+        }
+
+        //shift all the elements
+
+        for(int i = n - s - 1 ; i >= 0 ; i--){
+            arr[i + s] = arr[i];
+        }
+
+        //Change the starting elements
+        for(int i = 0; i < s; i++){
+            arr[i] = temp[i];
+        }
+    }
+
+
+}
+................................................................................
+
+Array Rotation using Reversals
+
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args) {
+        int[] arr = {1,2,3,4,5};
+        rightShiftArray(arr,1);
+        for(int i: arr){
+            System.out.print(i + " ");
+        }
+    }
+
+    static void leftShiftArray(int[] arr,int s){
+        int n = arr.length;
+        s = s % n;
+        reverseArray(arr,0,s-1);
+        reverseArray(arr,s,n-1);
+        reverseArray(arr,0,n-1);
+    }
+
+    static void rightShiftArray(int[] arr, int s){
+        int n = arr.length;
+        s = s % n;
+        reverseArray(arr, 0, n - s - 1 );
+        reverseArray(arr,n-s,n-1);
+        reverseArray(arr,0,n-1);
+    }
+
+    static void reverseArray(int[] arr, int start, int end){
+        int temp;
+        while(start<end) {
+            temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] =temp;
+            start++;
+            end--;
+        }
+    }
+}
+..................................................................................
+
+Matrix Addition and Substraction
+
+import java.sql.SQLOutput;
+import java.util.Arrays;
+
+public class Main{
+    public static void main(String[] args) {
+        int[][] mat1 = {
+                {1,1,1},
+                {2,2,2},
+                {3,3,3}
+        };
+
+        int[][] mat2 ={
+                {1,1,1},
+                {2,2,2},
+                {3,3,3}
+        };
+
+        System.out.println("Sum:");
+        int[][] resultSum = matrixAdd(mat1,mat2);
+        for(int[] i: resultSum){
+            System.out.println(Arrays.toString(i));
+        }
+
+        System.out.println();
+
+        System.out.println("Substraction:");
+        int[][] resultMinus = matrixSub(mat1,mat2);
+        for(int[] i: resultMinus){
+            System.out.println(Arrays.toString(i));
+        }
+
+        System.out.println();
+
+        System.out.println("Matric Transpose:");
+
+        int[][] resultTranspose = matrixTranspose(mat1);
+        for(int[] i: resultTranspose){
+            System.out.println(Arrays.toString(i));
+        }
+
+    }
+    //Matrix Addition
+    static int[][] matrixAdd(int[][] mat1, int[][]mat2){
+        int[][] result = new int[mat1.length][mat1[0].length];
+        for(int r = 0; r < mat1.length; r++){
+            for(int c = 0; c < mat1[0].length; c++){
+                result[r][c] = mat1[r][c] + mat2[r][c];
+            }
+        }
+        return result;
+    }
+
+    //Matrix Substraction
+    static int[][] matrixSub(int[][] mat1, int[][] mat2){
+        int[][] result = new int[mat1.length][mat1[0].length];
+        for(int r = 0; r < mat1.length; r++){
+            for(int c = 0; c < mat1[0].length; c++ ){
+                result[r][c] = mat1[r][c] - mat2[r][c];
+            }
+        }
+        return  result;
+    }
+
+    //Function to transpose the matrix
+    static int[][] matrixTranspose(int[][] mat){
+        //Swap the dimension
+        int[][] result = new int[mat[0].length][mat.length];
+        for(int r = 0; r < mat.length; r ++){
+            for(int c = 0; c < mat[0].length; c++){
+                //Swap the elements
+                result[c][r] = mat[r][c];
+            }
+        }
+        return result;
+    }
+
+}
+.........................................................................

@@ -1,0 +1,49 @@
+1071: Greatest Common Divisor Strings
+
+class Solution {
+    public String gcdOfStrings(String str1, String str2) {
+
+        // if str1 + str2 != str2 + str1 then return null
+        if(!(str1+str2).equals(str2+str1)){
+            return "";
+        }
+        else{
+            //find Greatest Common Divisor
+            int gcd = gcd(str1.length(), str2.length());
+            return str1.substring(0,gcd);
+        }
+    }
+    //Euclidean Algorithm to get the gcd
+    private int gcd(int x, int y){
+        return y == 0 ? x : gcd(y, x % y);
+    }
+    }
+...................................................................................
+605: Can Place Flowers
+
+
+class Solution {
+    public boolean canPlaceFlowers(int[] flowerbed, int n) {
+        //Iterate through the array
+        for(int i = 0; i < flowerbed.length; i++){
+
+            //Check if Left side is zero or out of bounds
+            boolean l = (i==0) || flowerbed[i-1] == 0;
+
+            //Check if right side is zero or out of bounds
+            boolean r  = (i == flowerbed.length - 1) || flowerbed[i+1] == 0;
+
+            //Subract from n and place 1 at i
+            if(flowerbed[i] == 0 && l && r){
+                flowerbed[i] = 1;
+                n--;
+            }
+        }
+
+        // if n is 0 return true, else false
+        return n <= 0;
+    }
+}
+
+............................................................................................
+
