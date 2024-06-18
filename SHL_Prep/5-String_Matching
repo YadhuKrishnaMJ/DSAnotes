@@ -1,0 +1,52 @@
+String Matching:
+    Concept of matching a substring in a String
+.........................................................
+
+Naive String Matching Algorithm:
+    Simplest String Matching Algorithm
+    Best Case -> O(n)
+    Worst Case -> O(nm)
+
+    Approach:
+        initialize lengths n and m (text and pattern)
+        Slide pattern over text one char at a time
+        Check match
+        if match found return index
+
+..................................................................................................................
+
+Code:
+
+public class Main{
+    public static void main(String[] args) {
+        String text =  "the coolest thing about yadhu is he is the best java coder ever, Big ups yadhu";
+        String pattern = "yadhu";
+        naiveStringMatch(text,pattern);
+    }
+
+    static void naiveStringMatch(String text, String pattern){
+
+        //Initialize the lengths of the strings
+        int n = text.length();
+        int m = pattern.length();
+
+        //Iterate through each starting character in TEXT
+        for(int i = 0; i <= n - m ; i++){
+            //initialize j to access out of j loop
+            int j;
+
+            //Iterate through each character in Pattern
+            for(j = 0; j < m ; j++){
+                //Break if not matched found
+                if(text.charAt(i+j) != pattern.charAt(j) ){
+                    break;
+                }
+            }
+            //If j iterates till m , then pattern is matched
+            if(j == m){
+                System.out.println("Pattern found at postion: "+ i);
+            }
+        }
+    }
+}
+...................................................................................................................

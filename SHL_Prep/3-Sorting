@@ -1,0 +1,143 @@
+Bubble Sort:
+    Swap elements two at a time, n number of times , each iteration largest element is placed at rightmost correct position
+
+..............................................................................................................................
+    
+public class Main{
+    public static void main(String[] args) {
+        int[] arr = {4,2,5,8,3,8,2,0,4,78,365,7,4,3254,46,4};
+        bubbleSort(arr);
+
+        for(int i: arr){
+            System.out.print(i + " " );
+        }
+    }
+
+    // Function to bubble Sort
+    static void bubbleSort(int[] arr){
+        int len = arr.length;
+        // Iterate for every largest element
+        for(int i = 0; i < len - 1; i ++){
+            // Dont iterate with elements already placed in rightmost correct position
+            for(int j = 0 ; j < len - 1 - i ; j++){
+                //Swap elements
+                if(arr[j] > arr[j+1]){
+                    int temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                }
+            }
+        }
+    }
+}
+
+..............................................................................................
+.............................................................................................
+
+Insertion Sort:
+    Divides Array into sorted and unsorted region.
+    Elements from Unsorted region are picked one by one and correctly placed in sorted region.
+    Like playing cards.
+    best case: O(n)
+    Avg worst case: O(n^2)
+
+..............................................................................................
+    Approach:
+        start with second element, first element considered sorted
+        Compare with sorted region, shift right in sorted region until correct position is found
+        insert current elemnt in correct position
+        Repeat for all elements
+...............................................................................................
+Code:
+
+public class Main{
+    public static void main(String[] args){
+        int[] arr = {2,34,5,6,3,35,5,3,2,4};
+        insertionSort(arr);
+        printArray(arr);
+
+    }
+
+    //Insertion sort method
+    static void insertionSort(int[] arr){
+
+        //Initialize arr size
+        int n = arr.length;
+
+        //Iterate the unsorted part (From 2nd element)
+        for(int i = 1; i < n; i++){
+
+            //Store the key to be added in sorted part
+            int key = arr[i];
+
+            //Sorted part starts from i - 1
+            int j = i - 1;
+
+            //Iterate  sorted part from right to left
+            while(j >= 0 && arr[j] > key){
+                //Shift elements
+                arr[j+1] = arr[j];
+                j--;
+            }
+            //Insert key at right position
+            arr[j+1] = key;
+        }
+    }
+
+    static void printArray(int[] arr){
+        for(int i: arr){
+            System.out.print(i + " ");
+        }
+    }
+}
+...................................................................................................................
+...................................................................................................................
+
+Selection Sort:
+    Divide into sorted and unsorted array
+    Approach:
+        start with first element and consider it as minimum
+        compare min with rest of element in unsorted
+        if smaller element found , update min
+        swap min with first element of unsorted Array
+        move boundary of sorted one to right, continue for rest of unsorted Array
+    
+Code:
+
+public class Main{
+    public static void main(String[] args) {
+        int[] arr = {2,4,7,3,9,3,7,3,5};
+        selectionSort(arr);
+        printArray(arr);
+    }
+
+    static void selectionSort(int[] arr){
+        //Init size of array
+        int n = arr.length;
+
+        //Iterate the unsorted array, and shifting to right once every inner interation
+        for(int i = 0; i < n - 1; i++){ //Iterate to second last element
+            //Min element is init as first element in unsorted array
+            int min = i;
+
+            //Iterate unsorted array to update with any smaller value
+            for(int j = i + 1; j < n; j++){
+                if(arr[j]<arr[min]){  //Change operator here to change the order of sorting
+                    min = j;
+                }
+            }
+            //Swap the min element with first element in unsorted array
+            int temp = arr[i];
+            arr[i] = arr[min];
+            arr[min] = temp;
+        }
+    }
+
+    static void printArray(int[] arr){
+        for(int i: arr){
+            System.out.print(i + " ");
+        }
+    }
+}
+.............................................................................................................
+............................................................................................................

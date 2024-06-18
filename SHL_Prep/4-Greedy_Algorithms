@@ -1,0 +1,163 @@
+Greedy Algorithms:
+    Finds local optimum in hope of Global optima
+    Optimization Problems
+.............................................................................
+
+Activity Selection Problems:
+    Activities with start and end times
+    max number of activities performed by single person by one at a time
+
+    Approach:
+        Sort by end times
+        Select first Activity
+        Select consequtive activities based on end time (greater or equal)
+
+..............................................................................
+
+Note:
+    Java Comparator:
+        custom ordering
+
+    @Override:
+        Overrides a superclass Method
+
+    (s1, s2) -> Integer.compare(s1.end, s2.end):
+        Lambda function to compare end time of two parameters
+...............................................................................
+
+import java.util.Arrays; 
+public class Main {
+    public static void main(String[] args) {
+        Activity[] acts = {
+                new Activity(1, 4),
+                new Activity(2, 7),
+                new Activity(4, 6),
+                new Activity(6, 8),
+        };
+        selectActivities(acts);
+    }
+
+    static void selectActivities(Activity[] acts) {
+        //Sort the Array , use lambda function to Compare the end times
+        Arrays.sort(acts, (s1, s2) -> Integer.compare(s1.end, s2.end));
+
+        //Select Last end time of first Activity
+        int lastEndTime = acts[0].end;
+
+        System.out.println("Activities Selected: ");
+        //Print it
+        System.out.println(acts[0].toString());
+
+        //Now Iterate throw Acts Array
+        for (int i = 1; i < acts.length; i++) {
+            
+            //print only if start time is greater than prev activity end time
+            if (acts[i].start >= lastEndTime) {
+                System.out.println(acts[i].toString());
+                lastEndTime = acts[i].end;
+            }
+        }
+
+    }
+}
+
+
+
+//Activity Class
+ class Activity {
+    int start;
+    int end;
+
+    //Constructor
+    Activity(int s, int e){
+        this.start = s;
+        this.end = e;
+    }
+
+    @Override
+    //Method to print the current activity start and end time
+    public String toString(){
+        return "Activity start:" + this.start + " Activity end:" + this.end;
+    }
+    
+}
+..........................................................................................
+..........................................................................................
+
+
+Fractional KnapSack Problem:
+
+    Items -> Weight and Value
+    KnapSack -> Max Capacity
+    Maximize Value in a KnapSack
+
+    Approach:
+        Calculate Value per unit Weight
+        Sort in decreasing order
+        Iterate and keep adding till max Capacity
+        USe fractions for items that cannot be fully  added
+
+    
+.............................................................................................
+
+Code:
+
+import java.util.Arrays;
+
+public class Main{
+    public static void main(String[] args) {
+        Item[] items = {
+                new Item(3,2),
+                new Item(5,7),
+                new Item(2,9),
+                new Item(5,8),
+                new Item(2,9)
+        };
+
+        fractionalKnapsack(15, items);
+    }
+
+    static void fractionalKnapsack(int maxCapacity , Item[] items){
+
+        // Sort the Array of items in descending order
+        Arrays.sort(items, (i1, i2) -> Double.compare(i2.valuePerWeight , i1.valuePerWeight ));
+
+        //Initialize Current Weight and Total Value
+        int currWeight = 0;
+        double totalValue = 0; // Use Double for fractional value
+
+        //Iterate through Desc Sorted items Array
+        for(Item i : items){
+
+            //If weight doesn't exceed max Capacity with added item weight
+            if(currWeight + i.weight <= maxCapacity){
+                currWeight += i.weight;
+                totalValue += i.value;
+            }
+
+            //Else Take fraction of value and break
+            else{
+                int remWeight = maxCapacity - currWeight;
+                totalValue += i.valuePerWeight * remWeight; //Use Value per Weight to calculate fractional Value
+                break;
+            }
+        }
+        System.out.println("The Max Total Value is: " + totalValue);
+    }
+
+}
+
+//Item Class
+class Item {
+    int weight;
+    int value;
+    double valuePerWeight;
+
+    //Constructor
+    Item(int w, int v){
+        this.weight = w;
+        this.value = v;
+        this.valuePerWeight = (double) v/w;
+    }
+}
+................................................................................................................
