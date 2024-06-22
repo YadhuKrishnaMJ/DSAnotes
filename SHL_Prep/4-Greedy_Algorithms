@@ -117,7 +117,8 @@ public class Main{
         fractionalKnapsack(15, items);
     }
 
-    static void fractionalKnapsack(int maxCapacity , Item[] items){
+    static void fractionalKnapsack(int maxCapacity , I
+    
 
         // Sort the Array of items in descending order
         Arrays.sort(items, (i1, i2) -> Double.compare(i2.valuePerWeight , i1.valuePerWeight ));

@@ -1,0 +1,180 @@
+Q2) collecting Candies
+
+Code:
+
+
+import java.util.*;
+public class Main{
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int t = in.nextInt();
+        while(t>0){
+            int size = in.nextInt();
+            PriorityQueue<Integer> pq = new PriorityQueue<>();
+            ArrayList<Integer> sumarr = new ArrayList<>();
+            //Add Elements into the priority queue
+            for(int i = 0; i < size; i++){
+                pq.add(in.nextInt());
+            }
+            int merged = 0;
+            int sum = 0;
+
+            while(!(pq.isEmpty())){
+                int element = pq.poll();
+                sum += element;
+                sumarr.add(sum);
+            }
+
+            int finalsum = 0;
+            sumarr.removeFirst();
+            for(Integer i : sumarr){
+                finalsum += i;
+            }
+            System.out.println(finalsum);
+            t--;
+        }
+    }
+}
+..............................................................................................................
+
+Q2) Class Monitor Question
+
+import java.util.*;
+public class Main{
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int size = in.nextInt();
+        ArrayList<Integer> arr = new ArrayList<>();
+        for(int i = 0; i < size; i++){
+            arr.add(in.nextInt());
+        }
+        int min = arr.get(0);
+        int cuts = 0;
+        for(int i: arr){
+            if(i < min){
+                min = i;
+                cuts++;
+            }
+        }
+        System.out.println(cuts);
+    }
+}
+...............................................................................................................
+Q3) Factorial Representation
+
+import java.util.*;
+public class Main{
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int s = in.nextInt();
+        int e = in.nextInt();
+        int fact = 1;
+        while (e >= s) {
+            fact *= e;
+            e--;
+        }
+        int power = 0;
+        while (fact % 10 == 0) {
+            power++;
+            fact = fact / 10;
+        }
+        System.out.println(fact + "*" + "10^" + power);
+    }
+
+}
+
+..................................................................................................................
+Q4) Left rotate an Array
+
+import java.util.*;
+public class Main{
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int size = in.nextInt();
+        int left = in.nextInt();
+        left = left % size;
+
+        int[] arr = new int[size];
+        for(int i = 0; i < size; i ++){
+            arr[i] = in.nextInt();
+        }
+
+        leftRotate(arr,left);
+    }
+
+    static void leftRotate(int[] arr, int left){
+        ArrayList<Integer> temp = new ArrayList<>();
+        for(int i = 0; i < left ; i++){
+            temp.add(arr[i]);
+        }
+        for(int i = left ; i < arr.length; i++ ){
+            arr[i-left] = arr[i];
+        }
+        int j = 0 ;
+        for(int i = arr.length - left; i < arr.length; i++){
+            arr[i] = temp.get(j);
+            j++;
+        }
+        for(int i:arr){
+            System.out.print(i + " ");
+        }
+    }
+
+}
+..........................................................................................................
+
+Remove Duplicates from a String
+
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        String str = in.nextLine();
+        removeDuplicates(str);
+
+    }
+    static void removeDuplicates(String str){
+        ArrayList<Character> check = new ArrayList<>();
+        for(int i = 0; i < str.length(); i++){
+            if(!check.contains(str.charAt(i))){
+                check.add(str.charAt(i));
+            }
+        }
+        StringBuilder sb = new StringBuilder();
+        for(char ch: check){
+            sb.append(ch);
+        }
+        String result = sb.toString();
+        System.out.println(result);
+    }
+}
+.........................................................................................
+Palindrome check
+
+.........................................................................................
+Gcd and lcm
+
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int a = in.nextInt();
+        int b = in.nextInt();
+        System.out.println(gcd(a,b));
+        System.out.println(lcm(a,b));
+    }
+    static int gcd(int a, int b){
+        while(b!=0){
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+    static int lcm(int a , int b){
+        return Math.abs(a*b) / gcd(a,b);
+    }
+}
+........................................................................................

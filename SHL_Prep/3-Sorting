@@ -95,6 +95,7 @@ public class Main{
 
 Selection Sort:
     Divide into sorted and unsorted array
+    O(n^2) in all cases
     Approach:
         start with first element and consider it as minimum
         compare min with rest of element in unsorted
@@ -140,4 +141,19 @@ public class Main{
     }
 }
 .............................................................................................................
-............................................................................................................
+.............................................................................................................
+Merge Sort Algorithmn:
+    
+
+
+
+..............................................................................................................
+..............................................................................................................
+Quick Sort Algorithmn:
+    Best Case and average case: O(nlogn)
+    Worst Case: O(n^2)
+    divide and conquer strategy
+    Use a pivot to sort the array
+    elements less than pivot on left and elements more than pivot on right
+    do this recursively
+
