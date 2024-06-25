@@ -1,0 +1,4 @@
+We can use String() function to convert an Array to a String
+
+String name = new String(arr);
+....................................................................................

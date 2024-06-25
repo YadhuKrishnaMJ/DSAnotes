@@ -1,0 +1,27 @@
+Two Pointers:
+Easy:
+
+283. Move Zeroes
+
+class Solution {
+    public void moveZeroes(int[] nums) {
+        int index = 0;  //Index to replace
+
+        // Iterate through the array
+        for(int i = 0; i < nums.length; i++){
+            // if nums is not zero then replace to index
+            if(nums[i] != 0){
+                nums[index++] = nums[i];
+            }
+        }
+
+        // fill remaining with zero
+        for(int i = index; i < nums.length; i++){
+            nums[i] = 0;
+        }
+    }
+}
+
+.................................................................................
+
+

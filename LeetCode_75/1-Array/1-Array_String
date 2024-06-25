@@ -1,3 +1,5 @@
+Easy Questions
+..................................................................................
 1071: Greatest Common Divisor Strings
 
 class Solution {
@@ -46,4 +48,128 @@ class Solution {
 }
 
 ............................................................................................
+345. Reverse Vowels of a string
 
+class Solution {
+    public String reverseVowels(String s) {
+        //String representing the vowels
+        String vowels = "AEIOUaeiou";
+
+        //Two pointers
+        int left = 0;
+        int right = s.length() - 1;
+        
+        // Convert String to character array 
+        char[] arr = s.toCharArray();
+
+        //Two pointer iteration
+        while(left < right){
+
+            //Find left index where vowel is present
+            while(left < right && vowels.indexOf(arr[left]) == -1){
+                left++;
+            }
+
+            //Find right index where vowel is present
+            while(left < right && vowels.indexOf(arr[right]) == -1){
+                right--;
+            }
+
+            //Swap left and right
+            char temp = arr[left];
+            arr[left] = arr[right];
+            arr[right] = temp;
+
+            //Move Left and right inward
+            left++;
+            right--;
+        }
+        //Return the arr as string
+        return new String(arr);
+    }
+}
+..........................................................................................
+..........................................................................................
+
+Medium Questions:
+
+151. Reverse Words in a String
+
+class Solution {
+    public String reverseWords(String s) {
+    //Trim and split into words based on multiple spaces
+    String[] words = s.trim().split("\\s+");
+    ArrayList<String> arr = new ArrayList<>();
+    //Add to the array
+    for(String i: words){
+        arr.add(i);
+    }
+    //String build in reverse order
+    StringBuilder sb = new StringBuilder();
+    for(int i = arr.size() - 1; i >= 0; i--){
+        sb.append(arr.get(i));
+        //Add space in between if not last word
+        if(i != 0){
+            sb.append(" ");
+        }
+    }
+    //return the string
+    return sb.toString();
+    }
+}
+
+............................................................................................
+
+334. Increasing Triplet Sequence 
+
+class Solution {
+    public boolean increasingTriplet(int[] nums) {
+        // Store two variables 
+        int a = Integer.MAX_VALUE;
+        int b = Integer.MAX_VALUE;
+
+        for (int i : nums) {
+            //First variable store smallest
+            if (i <= a) {
+                a = i;
+            } else if (i <= b) { //Second variable stores the second largest
+                b = i;
+            } else { //If a third variable is bigger than both, then a solution is found
+                return true;
+            }
+        }
+
+        //no solution found
+        return false;
+    }
+}
+
+.......................................................................................................................
+
+443: String Compression
+
+
+class Solution {
+    public int compress(char[] chars) {
+        int index = 0; // index to replace in chars
+        int i = 0; // index to iterate through the array
+        while(i < chars.length){
+            char currChar = chars[i]; // Store the current char
+            int count = 0; //Store the count of chars
+            while(i < chars.length && chars[i] == currChar){ // shouldnt exceed lengt
+                i++;
+                count++; //increase the count of chars reoccurence 
+            }
+
+            chars[index++] = currChar; // replace with curr char with index
+            if(count > 1){ // if count is > 1
+                for(char j: Integer.toString(count).toCharArray()){ // convert the number into array of chars
+                    chars[index++] = j; // store it 
+                }
+            }
+            
+        }
+        return index; // return the index
+    }
+}
+...............................................................................................................................
