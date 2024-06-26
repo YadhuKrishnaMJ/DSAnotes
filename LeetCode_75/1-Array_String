@@ -93,6 +93,10 @@ class Solution {
 
 Medium Questions:
 
+..........................................................................................
+..........................................................................................
+
+
 151. Reverse Words in a String
 
 class Solution {
@@ -173,3 +177,43 @@ class Solution {
     }
 }
 ...............................................................................................................................
+
+238: Product of array except Self
+
+Intuition:
+    first left pass do prefix Product
+    seond right to left pass do postfix Product
+    use curr to multipy
+
+    class Solution {
+        public int[] productExceptSelf(int[] nums) {
+            //create result arr with length of nums
+            int n = nums.length;
+            int[] result = new int[n];
+    
+            //Fill all with 1
+            Arrays.fill(result, 1);
+    
+            //Init curr
+            int curr = 1;
+    
+            //First pass left to right
+            for(int i = 0; i < n ; i++){
+                result[i] *= curr;
+                curr *= nums[i];
+            }
+    
+            //Reinit curr
+            curr = 1;
+    
+            //Second pass right to left
+            for(int i = n -1; i >= 0; i--){
+                result[i] *= curr;
+                curr *= nums[i];
+            }
+    
+            return result;
+    
+        }
+    }
+    ...............................................................................................................

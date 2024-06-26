@@ -1,6 +1,7 @@
 Two Pointers:
+..................................................................................................
 Easy:
-
+...................................................................................................
 283. Move Zeroes
 
 class Solution {
@@ -23,5 +24,124 @@ class Solution {
 }
 
 .................................................................................
+392: Is Subsequence
 
+Intuition:
+    Use two pointers i and j
+    if same element then iterate i 
+    keep iterating j
+    if i == s.length then true
 
+Code:
+
+class Solution {
+    public boolean isSubsequence(String s, String t) {
+        int i = 0;
+        int j = 0;
+        
+        //iterate till either j or i reaches end
+        while( i < s.length() && j < t.length()){
+            //if same then iterate i
+            if(s.charAt(i) == t.charAt(j)){
+                i++;
+            }
+            j++;
+        }
+        if(i == s.length()){
+            return true;
+        }
+        return false;
+    }
+}
+.......................................................................................
+
+Medium Level
+
+.......................................................................................
+
+1679. Max Number of k-sum pairs
+
+Intuition:
+    left and right pointer
+    sort the array
+    then if solution, then shift pointers towards each other
+    if added greater than solution, decrease right pointer
+    if added smaller than solution, increase left pointer
+
+Code:
+
+class Solution {
+    public int maxOperations(int[] nums, int k) {
+        // Sort the Array
+        Arrays.sort(nums);
+
+        //init left and right pointer
+        int left = 0;
+        int right  = nums.length - 1;
+
+        // Result to store the no of pairs
+        int result = 0 ;
+
+        // Iterate till left and right meet each other
+        while(left < right){
+            // if solution
+            if(nums[left] + nums[right] == k){
+                result++;
+                //Iterate towards each other
+                left++;
+                right--;
+            }
+            // if greater than k then decrease the bigger value
+            if(nums[left] + nums[right] > k){
+                right--;
+            }
+            // if lesser, then find the bigger left value
+            if(nums[left] + nums[right] < k){
+                left++;
+            }
+        }
+        return result;
+    }
+}
+................................................................................................................
+
+11. Container with most water
+
+Intuition:
+    Use two pointers at either side
+    while they dont meet check new area with max area
+    increment left pointer if left value is lower and vice versa
+
+Code:
+
+class Solution {
+    public int maxArea(int[] height) {
+        //Init max to store maximum area
+        int max = 0;
+
+        //Init left and right pointer form either sides of the array
+        int left = 0;
+        int right = height.length - 1;
+
+        //While left and right doesnt meet
+        while (left < right) {
+            //Compute temp area (check min of both height)
+            int temparea = Math.min(height[left], height[right]) * (right - left);
+
+            //Update bigger value to max
+            max = Math.max(max, temparea);
+            
+            //if left is lesser, then increment vise versa
+            if (height[left] < height[right]) {
+                left++;
+            }
+
+            else {
+                right--;
+            }
+        }
+
+        return max;
+    }
+}
+......................................................................................................................

@@ -118,6 +118,10 @@ Integer[] array = dynamicArray.toArray(new Integer[dynamicArray.size()]);
 
 Collections.reverse(dynamicArray);
 
+-> Collections.sort() sort the dynamic array
+
+Collections.sort(dynamicArray);
+
 
 ...................................................................................................................................
 
