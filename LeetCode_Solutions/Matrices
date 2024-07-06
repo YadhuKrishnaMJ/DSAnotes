@@ -1,0 +1,51 @@
+54. Spiral Matrix
+
+Intuition:
+    initialize rowStart, rowEnd, ColStart and colEnd
+    traverse left, down, left and up while updating above values
+
+Code:
+
+class Solution {
+    public List<Integer> spiralOrder(int[][] matrix) {
+        int rowStart = 0;
+        int colStart = 0;
+        int rowEnd = matrix.length - 1;
+        int colEnd = matrix[0].length - 1;
+
+        ArrayList<Integer> arr = new ArrayList<>();
+
+        while (rowStart <= rowEnd && colStart <= colEnd) {
+            // traverse left
+            for (int j = colStart; j <= colEnd; j++) {
+                arr.add(matrix[rowStart][j]);
+            }
+            rowStart++;
+
+            // traverse down
+            for (int j = rowStart; j <= rowEnd; j++) {
+                arr.add(matrix[j][colEnd]);
+            }
+            colEnd--;
+
+            // traverse left
+            if (rowStart <= rowEnd) {
+                for (int j = colEnd; j >= colStart; j--) {
+                    arr.add(matrix[rowEnd][j]);
+                }
+            }
+            rowEnd--;
+            // Traverse Up
+            if (colStart <= colStart) {
+                for (int j = rowEnd; j >= rowStart; j--) {
+                    arr.add(matrix[j][colStart]);
+                }
+            }
+            colStart++;
+        }
+
+        return arr;
+
+    }
+}
+......................................................................................................

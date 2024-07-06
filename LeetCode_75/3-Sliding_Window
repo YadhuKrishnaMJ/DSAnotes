@@ -1,0 +1,82 @@
+General Approach:
+    Initialize the first window and store
+    slide the window while adding element to result and removing first element from the result
+.........................................................................................................
+Easy
+.........................................................................................................
+643. Maximum Average Subarray 1:
+
+    Intuition:
+        calculate average for first window
+        iterate from k,  sum minus first element and add new element(sliding window)
+        calculate new avg and replace if greater
+
+
+Code:
+
+class Solution {
+    public double findMaxAverage(int[] nums, int k) {
+        double maxAvg = Double.MIN_VALUE; //MaxAvg 
+        double sum = 0;  // To check sum
+        for(int i = 0; i < k; i++){
+            sum += nums[i];        // initialize first sliding window
+        }
+        maxAvg = sum / k;         //Save the Average of first window
+
+        for(int i = k; i < nums.length; i ++){
+            sum = sum + nums[i] - nums[i-k];    // Add new Element , Remove first
+            if((sum/k) > maxAvg){
+                maxAvg = sum/k;           // Calculate new Avg and replace if greater
+            }
+        }
+        return maxAvg;
+    }
+}
+
+...........................................................................................................
+
+1456. Maximum Number of Vowels in a Substring of Given Length
+
+Intuition:
+    initialize sliding window
+    if vowel , increment .
+
+    while iterating, check if new added element is vowel and increment
+    Check if removed element is vowel and decrement
+    Compare and swap with maxVowels
+
+
+Code:
+
+
+class Solution {
+    public int maxVowels(String s, int k) {
+        String vowels = "aeiouAEIOU";       //Vowels String
+        
+        int maxVowels = 0;                      //Max no of vowels
+        int currVowels = 0;                     //Current no of vowels
+
+        for(int i = 0; i < k ; i++){                //initialize the first window
+            if(vowels.indexOf(s.charAt(i)) != -1){
+                currVowels++;
+            }
+        }
+
+        maxVowels = currVowels;            //Store the current vowels
+
+        for(int i = k ; i < s.length() ; i++){          //Iterate from K
+            if(vowels.indexOf(s.charAt(i)) != -1){      // new element =v , increment currVowel
+                currVowels++;
+            }
+            if(vowels.indexOf(s.charAt(i-k)) != -1){    // if rem element = v, decrement
+                currVowels--;
+            }   
+            if(currVowels > maxVowels){                 // Compare and swap
+                maxVowels = currVowels;
+            }
+        }
+        return maxVowels;
+    }
+}
+
+........................................................................................................

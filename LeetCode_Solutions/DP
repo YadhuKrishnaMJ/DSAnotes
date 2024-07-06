@@ -1,0 +1,106 @@
+.....................................................................................................
+Easy
+......................................................................................................
+
+70. Climbing Stairs
+
+Intuition:
+    Step[n] = step[n-1] + step[n-2]
+    Very similar to Fibonacci
+    to reach n -> no of ways in n-1 + no of ways in n -2
+
+Code:
+
+class Solution {
+    public int climbStairs(int n) {
+        //Edge case
+        if(n == 1){
+            return 1;
+        }
+
+        int[] dp = new int[n+1];
+        //We know that 
+        dp[1] = 1;
+        dp[2] = 2;
+
+
+        //store no of ways to reach a point using dp
+        for( int i = 3; i <= n ; i++){
+            dp[i] = dp[i-1] + dp[i-2];
+        }
+
+        //return value at index
+        return dp[n];
+
+    }
+}
+...................................................................................................
+Medium
+..................................................................................................
+
+120: Triangle
+
+Intuition:
+    store the sum of the triangle index and min adjacent to each index in a new array n+1 x n+1 array
+    return the top element of the array
+
+class Solution {
+    public int minimumTotal(List<List<Integer>> triangle) {
+        //Get the size of the triangle
+        int n = triangle.size();
+
+        //Init the dp memoization matrix
+        int[][] dp = new int[n+1][n+1];
+
+
+        //Iterate from bottom (Bottom up approach)
+        for(int i = n - 1; i >= 0; i--){
+            for(int j = 0; j <= i; j++){
+
+                //Find min of next level
+                dp[i][j] = triangle.get(i).get(j) + Math.min(dp[i+1][j],dp[i+1][j+1]);
+            }
+        }
+        //Will give solution of the entire triangle
+        return dp[0][0];
+    }
+}
+....................................................................................................................
+198: House Robber 
+
+Intuition:
+    total loot at house(n) = max(totalLoot[n - 2] + loot[n], totalLoot[n-1]);
+
+Code:
+
+class Solution {
+    public int rob(int[] nums) {
+        //initialize the length
+        int n = nums.length;
+        
+        //Edge Cases
+        if(n == 0){
+            return 0;
+        }
+        if(n == 1){
+            return nums[0];
+        }
+        //Initialize the dp array
+        int[] dp = new int[n];
+
+        //initialise first two dp element
+        dp[0] = nums[0];
+        dp[1] = Math.max(nums[0],nums[1]);
+
+        //Formula
+        for(int i = 2; i < dp.length; i++){
+            dp[i] = Math.max(dp[i-2]+nums[i], dp[i-1]); 
+        }
+        //Return last element
+        return dp[dp.length - 1];
+
+
+    }
+}
+...........................................................................................................................
+

@@ -1,0 +1,16 @@
+Dynamic Programming Approach:
+    Break down the problem into smaller problems
+    Solve a smaller problem
+    Store the result(Memoization)
+    use the result to continue solving
+
+Common Applications:
+    optimal Solutions
+    Counting total no of Solutions
+    
+
+.......................................................................................................................
+Fibonacci Series:
+    F(0) = 0
+    F(1) =  1
+    F(N) = F(N-1) + F(N-2)
