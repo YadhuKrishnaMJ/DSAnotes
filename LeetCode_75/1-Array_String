@@ -216,6 +216,50 @@ Intuition:
     
         }
     }
-    ...............................................................................................................
+...............................................................................................................
 
-    
+724. Find Pivot index 
+
+    Intuition:
+        Find Prefix and Suffix array
+        if Prefix[i] == suffix[i], then return if
+
+
+Code:
+class Solution {
+    public int pivotIndex(int[] nums) {
+        int[] prefix = getPrefix(nums);   //Get the prefix sum
+        int[] suffix = getSuffix(nums);   //Get the suffix sum
+        System.out.println(Arrays.toString(prefix));   //Debug
+        System.out.println(Arrays.toString(suffix));
+        int n = nums.length;           
+        for(int i = 0; i < n ; i++){        //Iterate all elements
+            if(suffix[i] == prefix[i]){     //suffix == suffix then pivot
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public int[] getPrefix(int[] nums){     //getting prefix
+        int n = nums.length;
+        int[] prefix = new int[n];
+        prefix[0] = nums[0];
+        for(int i = 1; i < n; i++){
+            prefix[i] = prefix[i-1] + nums[i];
+        }
+        return prefix;
+    }
+
+    public int[] getSuffix(int[] nums){         //Getting suffix
+        int n = nums.length;
+        int[] suffix = new int[n];
+        suffix[n-1] = nums[n-1];
+        for(int i = n - 2; i >= 0; i--){
+            suffix[i] = suffix[i+1] + nums[i];
+        }
+        return suffix;
+    }
+}
+..........................................................................................................................
+

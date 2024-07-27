@@ -1,0 +1,90 @@
+Easy :
+
+206. Reverse Linked List:
+
+Intuition:
+    Two Pointers:
+        Prev and curr
+        Loop till End
+        Reverse curr link  
+        Iterate one step ahead for both the pointers
+
+
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        //Two Pointers Approach
+        ListNode prev = null;
+        ListNode curr = head;
+
+        //Loop till last element
+        while(curr!= null){
+            ListNode temp = curr.next; //Store the next curr 
+            //reverse the link
+            curr.next = prev;
+
+            //Iterate two pointers one step ahead
+            prev = curr;
+            curr = temp;
+        }
+
+        //curr is null, so prev is the new heas
+        return prev;
+    }
+}
+.............................................................................................................
+Medium
+.............................................................................................................
+2095. Delete the Middle Node of a Linked List:
+
+Intuition:
+    Count elements
+    Divide and find Middle
+    Use two pointers to iterate till middle and delete middle element
+
+Code:
+
+class Solution {
+    public ListNode deleteMiddle(ListNode head) {
+        //Intialize the total number of elements
+        int n = 0;
+        //Edge Cases
+        if(head == null || head.next == null){
+            return null;
+        }
+        //Ptr to count elements
+        ListNode ptr = head;
+        //Count elements
+        while(ptr != null){
+            n++;
+            ptr = ptr.next;
+        }
+        //Middle Element position
+        int middle = n/2;
+
+        head = deleteAtK(head, middle);
+        return head;
+    }
+
+    private ListNode deleteAtK(ListNode head, int m){
+        //two pointers to delete element
+        ListNode prev = null;
+        ListNode curr = head;
+
+        //Bring Curr to middle element
+        while(m > 0 && curr != null){
+            prev = curr;
+            curr = curr.next;
+            m--;
+        }
+        
+        //omit current
+        if(prev!=null && curr != null){
+            prev.next = curr.next;
+        }
+        return head;
+
+    }
+}
+............................................................................................................................
+
+

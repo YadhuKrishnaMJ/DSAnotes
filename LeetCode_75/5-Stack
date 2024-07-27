@@ -1,0 +1,84 @@
+Stack:
+
+.....................................................
+Medium
+.....................................................
+
+2390. Removing Stars From a String
+
+class Solution {
+    public String removeStars(String s) {
+        //Create Stack to store elements
+        Stack<Character> st = new Stack<>();
+
+        //if * == pop else, push
+        for(int i = 0; i < s.length() ; i++){
+            if(s.charAt(i) != '*'){
+                st.push(s.charAt(i));
+            } else {
+                st.pop();
+            }
+        }
+        //Create SB to create a string of stack and return
+        StringBuilder sb = new StringBuilder();
+        for(char c: st){
+            sb.append(c);
+        }
+        return sb.toString();
+    }
+}
+..............................................................
+
+735. Asteroid Collision
+
+Intuition:
+    Stack
+    Iterate all elements in array
+    Inner While loop till stack is not empty, new element is negative, top element positive, causing Collision
+    Use addition logic to check which asteroid breaks and do operation, Use i = 0 to exit of loop
+    Outside the loop check if element is not broken, then push
+    copy tro array and return
+
+Code:
+
+class Solution {
+    public int[] asteroidCollision(int[] asteroids) {
+        //Create a Stack
+        Stack<Integer> st = new Stack<>();
+
+        //Iterate every element in asteroids
+        for(int i : asteroids){
+            //Stack not empty, i is negative, top is positive ,ie collision
+            while(!(st.isEmpty()) && i < 0 && st.peek() > 0){
+
+                //top asteroid breaks
+                if(i + st.peek() < 0 ){
+                    st.pop();
+                }
+                //New asteroid breaks
+                else if (i + st.peek() > 0){
+                    i = 0;
+                }
+                //both asteroid breaks
+                else{
+                    st.pop();
+                    i = 0;
+                }
+            }
+            //push if element is not zero(not broken)
+            if(i != 0){
+                st.push(i);
+            }
+        }
+        //Copy to an array
+        int[] result = new int[st.size()];
+        for(int i = st.size() - 1; i >= 0; i--){
+            result[i] = st.pop();
+        }
+        //return the result
+        return result;
+    }
+}
+
+.....................................................................................................................................................
+

@@ -1,0 +1,52 @@
+Linux:
+    Open Source Operating System
+Ubuntu:
+    Linux Distribution
+Unix:
+    Propreitary OS software
+    Linux is based on Unix
+................................................
+Linux Storage:
+    Tree Structure
+    / -> root
+................................................
+Interfaces:
+    CLI:
+        Command Line Interface
+
+    GUI:
+        Graphical User Interface
+................................................
+$ -> Regular User
+/ -> Root directory
+
+User@machine:/$
+................................................
+Users:
+
+................................................
+Commands in Linux:
+
+    Ls:
+        All files/directories in directories
+
+    pwd:
+        Print working directory
+
+    cd <directory>:
+        Change directory
+        cd .. -> go back
+
+    mkdir <directory>:
+        Make a new Directory
+
+    touch <file.ext>:
+        Creates a new blank file
+
+    mv <file> <location>:
+        Moves a file to the specified location
+
+    cp <file> <location>:
+        Copies the file to the destination
+        Eg:
+            cp /home/terminal/yadhu/new.txt /home/terminal

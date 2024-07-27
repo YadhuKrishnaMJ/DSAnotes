@@ -1,6 +1,10 @@
 General Approach:
     Initialize the first window and store
-    slide the window while adding element to result and removing first element from the result
+    slide the window while adding element to result and removing first element from the 
+    
+Identification:
+    Usually if you something related to sliding window, like int K (size of subarray/window)
+    
 .........................................................................................................
 Easy
 .........................................................................................................
@@ -80,3 +84,53 @@ class Solution {
 }
 
 ........................................................................................................
+
+Medium
+
+........................................................................................................
+1004: Maximum Consequtive Ones III
+
+Intuition:
+    two pointers (sliding window)
+    zerocount, max_ones init
+    let the end pointer iterate till end
+    if end is a zero, increment zero count 
+    If zero count exceeds k , loop start++ until zerocount(minus any zeroes found) decreases below k
+    check max
+
+Code:
+    class Solution {
+        public int longestOnes(int[] nums, int k) {
+            //Initialize pointers and max
+            int start = 0;  
+            int max_ones = 0;
+            int zero_count = 0;
+    
+            //loop the end pointer till end
+            for(int end = 0; end < nums.length; end++){
+                //If zero, increment zero count
+                if(nums[end] == 0){
+                    zero_count++;
+                }
+    
+                //If zero count exceed, remove zeroes from start
+                while(zero_count > k){
+                    if(nums[start] == 0){
+                        zero_count--;
+                    }
+                    start++;
+                }
+    
+                //Check Max
+                max_ones = Math.max(max_ones, end - start + 1);
+            }
+            return max_ones;
+        }
+    }
+
+.................................................................................................................
+
+1493. Longest Subarray of 1s After Deleting One Element
+
+Intuition:
+        Special Case of 

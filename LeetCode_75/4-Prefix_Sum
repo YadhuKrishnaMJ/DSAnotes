@@ -1,0 +1,39 @@
+General Approach:
+    Create prefix array
+    init first element same as arr
+    Then iterative add previous prefix sum and curr arr
+
+...................................................................................................................................
+
+1732. Find Highest Altitude
+
+Intuition:
+    find prefix sum
+    find the max in the prefix sum
+
+
+    class Solution {
+        public int largestAltitude(int[] gain) {
+            int[] prefix = getPrefix(gain);     //get prefix Sum Array
+            System.out.println(Arrays.toString(prefix));  // Debug
+            int max = 0;    //Start max to 0 (starting altitude)
+            for(int i: prefix){     // Find maximum in prefix array
+                if(i > max){
+                    max = i;
+                }
+            }
+            return max;
+        }
+        
+        public int[] getPrefix(int[] arr){
+            int n = arr.length;       
+            int[] prefix = new int[n];      //Create prefix array 
+            prefix[0] = arr[0];             //Starting element same
+            for(int i = 1; i < n ; i++){        //Iteratively Add previous prefix and curr arr[i]
+                prefix[i] = prefix[i-1] + arr[i];
+            }
+            return prefix;
+        }
+    }
+
+........................................................................................................................................
