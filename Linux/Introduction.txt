@@ -17,7 +17,7 @@ Interfaces:
     GUI:
         Graphical User Interface
 ................................................
-$ -> Regular User
+$ -> Regular User   # -> Super User
 / -> Root directory
 
 User@machine:/$
@@ -29,6 +29,17 @@ Commands in Linux:
 
     Ls:
         All files/directories in directories
+
+        Options:
+            ls -l:
+                Shows details of the files
+                Permissions-group-user-
+            ls -a:
+                Shows Hidden Files too
+            ls -t:
+                Shows by time sorted
+            ls -r:
+                Reverse order of files  
 
     pwd:
         Print working directory
@@ -50,3 +61,63 @@ Commands in Linux:
         Copies the file to the destination
         Eg:
             cp /home/terminal/yadhu/new.txt /home/terminal
+
+    history:
+        Prints history of commands used'
+    
+    sudo apt install <package>:
+        installs a specific pakage 
+
+    top:
+        shows list of processes ordered by resource consumption
+    
+    ps:
+        Shows all processing running in the system
+        options:
+            ps -a:
+                Shows all background processes also
+            ps -e:
+                display more info
+            ps -f:
+                full format listing more detailed info
+
+    kill <PID>:
+        Terminates the mentioned process with the PID
+
+    vim <filename>:
+        source editor for linux
+        Instructions:
+            press i -> insert mode and write text
+            esc -> return to view mode
+            : ->
+                :q! -> quit without save
+                :wq -> quit with save
+.........................................................
+    Permissions format in ls:   
+        r-> Read
+        w-> Write
+        x-> execute
+
+        -rwerwerwe -> user,group,others
+        intial - -> d if directory file
+
+    chmod <number> <file>:
+        Sets the read write Permissions accroding to the number
+        number:
+            each digit represents binary bits of rwx
+            5 -> 101 -> r-x
+            first digit -> user
+            second digit -> group
+            third digit -> others 
+......................................................... 
+
+Bash Commands:
+    Echo:
+        Print a line to the terminal
+        Ex:
+            echo yadhu
+    
+    printf:
+        Print formatted text to a terminal  
+        Ex:
+            printf "This is yadhu /n"
